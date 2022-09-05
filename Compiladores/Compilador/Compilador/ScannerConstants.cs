@@ -2,7 +2,7 @@ namespace Compilador;
 
 public class ScannerConstants
 {
-    public readonly int[] ScannerTableIndexes =
+    public static readonly int[] ScannerTableIndexes =
     {
         0,
         88,
@@ -54,7 +54,7 @@ public class ScannerConstants
         1144
     };
 
-    public readonly int[][] ScannerTable =
+    public static readonly int[][] ScannerTable =
     {
         new int[] {9, 1},
         new int[] {10, 1},
@@ -1202,28 +1202,28 @@ public class ScannerConstants
         new int[] {57, 45}
     };
 
-    public readonly int[] TokenState =
+    public static readonly int[] TokenState =
     {
         -2, 0, 46, -1, 0, 43, -1, 31, 32, 41, 39, 28, 40, -1, 42, 3, 3, 27, 29, 37, 30, 38, 2, -2, -1, 33, -1, 34, 36,
         6, 44, 47, 48, 4, 4, -1, 35, -1, -2, 5, 45, -1, 3, 2, -2, 4, 0
     };
 
-    public readonly int[] SpecialCasesIndexes =
+    public static readonly int[] SpecialCasesIndexes =
     {
         0, 0, 0, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20,
         20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20, 20
     };
 
-    public readonly string[] SpecialCasesKeys =
+    public static readonly string[] SpecialCasesKeys =
     {
         "boolean", "break", "char", "do", "else", "end", "false", "float", "fun", "if", "int", "main", "print",
         "println", "readln", "string", "true", "val", "var", "while"
     };
 
-    public readonly int[] SpecialCasesValues =
+    public static readonly int[] SpecialCasesValues =
         {7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26};
 
-    public readonly string[] ScannerError =
+    public static readonly string[] ScannerError =
     {
         "Caractere não esperado",
         "",

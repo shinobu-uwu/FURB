@@ -1,6 +1,6 @@
 namespace Compilador;
 
-public class Lexico : Constants
+public class Lexico
 {
     private int Position;
     private string Input;
@@ -16,12 +16,12 @@ public class Lexico : Constants
         if (!HasInput())
             return null;
 
-        int start = Position;
+        var start = Position;
 
-        int state = 0;
-        int lastState = 0;
-        int endState = -1;
-        int end = -1;
+        var state = 0;
+        var lastState = 0;
+        var endState = -1;
+        var end = -1;
 
         while (HasInput())
         {
@@ -31,50 +31,40 @@ public class Lexico : Constants
             if (state < 0)
                 break;
 
-            else
-            {
-                if (TokenForState(state) >= 0)
-                {
-                    endState = state;
-                    end = Position;
-                }
-            }
+            if (TokenForState(state) < 0) continue;
+            endState = state;
+            end = Position;
         }
 
         if (endState < 0 || (endState != state && TokenForState(lastState) == -2))
-            throw new LexicalError(ScannerError[lastState], start);
+            throw new LexicalError(ScannerConstants.ScannerError[lastState], start);
 
         Position = end;
 
-        int token = TokenForState(endState);
+        var token = TokenForState(endState);
 
         if (token == 0)
             return NextToken();
         else
         {
-            String lexeme = Input.Substring(start, end);
+            var lexeme = Input.Substring(start, end - start);
             token = LookupToken(token, lexeme);
-            return new Token(token, lexeme, start);
+            return new Token((Classes) token, lexeme, start);
         }
     }
 
-    private int NextState(char? c, int state)
+    private int NextState(char c, int state)
     {
-        if (c is null)
-        {
-            return -1;
-        }
-
-        int start = ScannerTableIndexes[state];
-        int end = ScannerTableIndexes[state + 1] - 1;
+        var start = ScannerConstants.ScannerTableIndexes[state];
+        var end = ScannerConstants.ScannerTableIndexes[state + 1] - 1;
 
         while (start <= end)
         {
-            int half = (start + end) / 2;
+            var half = (start + end) / 2;
 
-            if (ScannerTable[half][0] == c)
-                return ScannerTable[half][1];
-            else if (ScannerTable[half][0] < c)
+            if (ScannerConstants.ScannerTable[half][0] == c)
+                return ScannerConstants.ScannerTable[half][1];
+            else if (ScannerConstants.ScannerTable[half][0] < c)
                 start = half + 1;
             else //(SCANNER_TABLE[half][0] > c)
                 end = half - 1;
@@ -85,28 +75,34 @@ public class Lexico : Constants
 
     private int TokenForState(int state)
     {
-        if (state < 0 || state >= TokenState.Length)
+        if (state < 0 || state >= ScannerConstants.TokenState.Length)
             return -1;
 
-        return TokenState[state];
+        return ScannerConstants.TokenState[state];
     }
 
     public int LookupToken(int child, string key)
     {
-        int start = SpecialCasesIndexes[child];
-        int end = SpecialCasesIndexes[child + 1] - 1;
+        var start = ScannerConstants.SpecialCasesIndexes[child];
+        var end = ScannerConstants.SpecialCasesIndexes[child + 1] - 1;
 
         while (start <= end)
         {
-            int half = (start + end) / 2;
-            int comp = SpecialCasesKeys[half].CompareTo(key);
+            var half = (start + end) / 2;
+            var comp = string.Compare(ScannerConstants.SpecialCasesKeys[half], key, StringComparison.Ordinal);
 
             if (comp == 0)
-                return SpecialCasesValues[half];
+            {
+                return ScannerConstants.SpecialCasesValues[half];
+            }
             else if (comp < 0)
+            {
                 start = half + 1;
+            }
             else //(comp > 0)
+            {
                 end = half - 1;
+            }
         }
 
         return child;
@@ -117,11 +113,11 @@ public class Lexico : Constants
         return Position < Input.Length;
     }
 
-    private char? NextChar()
+    private char NextChar()
     {
         if (HasInput())
             return Input[Position++];
 
-        return null;
+        return unchecked((char) -1);
     }
 }

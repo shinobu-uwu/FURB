@@ -2,11 +2,11 @@ namespace Compilador;
 
 public class Token
 {
-    public int Id { get; set; }
+    public Classes Id { get; set; }
     public string Lexeme { get; set; }
     public int Position { get; set; }
 
-    public Token(int id, string lexeme, int position)
+    public Token(Classes id, string lexeme, int position)
     {
         Id = id;
         Lexeme = lexeme;

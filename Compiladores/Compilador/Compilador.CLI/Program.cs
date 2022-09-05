@@ -1,3 +1,12 @@
-﻿// See https://aka.ms/new-console-template for more information
+﻿using Compilador;
 
-Console.WriteLine("Hello, World!");
+var compilador = new Lexico("int a = 3;");
+Token t;
+
+while ((t = compilador.NextToken()) != null)
+{
+    Console.WriteLine(t.Id);
+    Console.WriteLine(t.Lexeme);
+    Console.WriteLine(t.Position);
+    Console.WriteLine();
+}
