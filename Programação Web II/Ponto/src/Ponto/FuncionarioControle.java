@@ -7,11 +7,12 @@ import java.util.ArrayList;
 public class FuncionarioControle {
     private EmpresaControle empresaControle = new EmpresaControle();
 
-    public void CriarFuncionario(String nome, Empresa empresa) throws ParametroInvalidoException {
+    public void CriarFuncionario(String nome, String nomeEmpresa) throws Exception {
         if (nome.isEmpty()) {
             throw new ParametroInvalidoException();
         }
-        empresa.addFuncionario(new Funcionario(nome));
+        Empresa emp = empresaControle.Ler(nomeEmpresa);
+        emp.addFuncionario(new Funcionario(nome));
     }
 
     public void Editar(Funcionario funcionario, String nome) throws ParametroInvalidoException {
@@ -25,10 +26,13 @@ public class FuncionarioControle {
         empresa.RemoveFuncionario(func);
     }
 
-    public Funcionario Ler(String nome, Empresa emp) throws Exception {
+    public Funcionario Ler(String nome, String nomeEmpresa) throws Exception {
         if (nome.isEmpty()) {
             throw new ParametroInvalidoException();
         }
+
+        Empresa emp = empresaControle.Ler(nomeEmpresa);
+
         for (Funcionario func : emp.getFuncionarios()) {
             if (func.getNome().equals(nome)) {
                 return func;

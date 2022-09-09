@@ -13,10 +13,10 @@ import javax.jws.soap.SOAPBinding;
 @SOAPBinding(style = SOAPBinding.Style.RPC)
 public interface FuncionarioServer {
     @WebMethod
-    void criar(String nomeFuncionario, Empresa empresa) throws ParametroInvalidoException;
+    void criar(String nomeFuncionario, String nomeEmpresa) throws Exception;
 
     @WebMethod
-    Funcionario ler(String nomeFuncionario, Empresa empresa) throws Exception;
+    Funcionario ler(String nomeFuncionario, String nomeEmpresa) throws Exception;
 
     @WebMethod
     void atualizar(Funcionario funcionario, String nome) throws ParametroInvalidoException;
