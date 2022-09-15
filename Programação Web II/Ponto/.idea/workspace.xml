@@ -1,33 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0825e191-d84f-4ab5-a047-06edc02fcb77" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../../Estatística/Aula 1/.idea/other.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Cliente/FuncionarioCliente.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Teoria dos grafos/Trabalho 1/Trabalho 1/Trabalho 1.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../../Teoria dos grafos/Trabalho 1/Trabalho 1/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Estatística/Aula 1/.idea/Aula 1.iml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Estatística/Aula 1/.idea/Aula 1.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Estatística/Aula 1/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/../../Estatística/Aula 1/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../Estatística/Aula 1/planilha.csv" beforeDir="false" afterPath="$PROJECT_DIR$/../../Estatística/Aula 1/planilha.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/soap-furb/Cliente/EmpresaCliente.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/soap-furb/Exceptions/NaoEncontradoException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/soap-furb/Exceptions/ParametroInvalidoException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/soap-furb/Main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/soap-furb/Ponto/Empresa.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/soap-furb/Ponto/EmpresaControle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/soap-furb/Ponto/Funcionario.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/soap-furb/Ponto/FuncionarioControle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/soap-furb/Server/EmpresaServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/soap-furb/Server/EmpresaServerImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/soap-furb/Server/FuncionarioServer.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/soap-furb/Server/FuncionarioServerImpl.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ponto/Funcionario.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ponto/Funcionario.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Ponto/FuncionarioControle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Ponto/FuncionarioControle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/FuncionarioServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/FuncionarioServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Server/FuncionarioServerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Server/FuncionarioServerImpl.java" afterDir="false" />
-    </list>
+    <list default="true" id="0825e191-d84f-4ab5-a047-06edc02fcb77" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -78,7 +52,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1662758874269</updated>
-      <workItem from="1662758876751" duration="2154000" />
+      <workItem from="1662758876751" duration="2203000" />
     </task>
     <servers />
   </component>

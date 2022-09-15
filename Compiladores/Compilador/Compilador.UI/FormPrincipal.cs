@@ -14,6 +14,7 @@ public sealed class FormPrincipal : Form
     public readonly BarraStatus BarraStatus = new();
     public readonly AreaMensagens AreaMensagens = new();
     public readonly NumberedBorder NumberedBorder = new();
+    public readonly Lexico Lexico = new();
     public string? CaminhoArquivoAberto;
 
     public static FormPrincipal GetInstancia()

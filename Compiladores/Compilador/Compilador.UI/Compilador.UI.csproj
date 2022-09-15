@@ -9,4 +9,8 @@
         <RootNamespace>Compilador.UI</RootNamespace>
     </PropertyGroup>
 
+    <ItemGroup>
+      <ProjectReference Include="..\Compilador\Compilador.csproj" />
+    </ItemGroup>
+
 </Project>

@@ -2,11 +2,11 @@ namespace Compilador;
 
 public class Token
 {
-    public Classes Id { get; set; }
+    public Classe Id { get; set; }
     public string Lexeme { get; set; }
     public int Position { get; set; }
 
-    public Token(Classes id, string lexeme, int position)
+    public Token(Classe id, string lexeme, int position)
     {
         Id = id;
         Lexeme = lexeme;
@@ -15,6 +15,6 @@ public class Token
 
     public override string ToString()
     {
-        return Id + " ( " + Lexeme + " ) @ " + Position;
+        return $"{Id} ({Lexeme}) @ {Position}";
     }
 }

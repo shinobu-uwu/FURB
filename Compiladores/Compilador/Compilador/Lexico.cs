@@ -11,6 +11,11 @@ public class Lexico
         Position = 0;
     }
 
+    public Lexico()
+    {
+        Position = 0;
+    }
+
     public Token NextToken()
     {
         if (!HasInput())
@@ -49,7 +54,7 @@ public class Lexico
         {
             var lexeme = Input.Substring(start, end - start);
             token = LookupToken(token, lexeme);
-            return new Token((Classes) token, lexeme, start);
+            return new Token((Classe) token, lexeme, start);
         }
     }
 

@@ -1,12 +1,19 @@
 ﻿using Compilador;
 
-var compilador = new Lexico("int a = 3;");
+var texto = @"
+[
+isso é um comentário
+]
+break area (
+1.1d10";
+var compilador = new Lexico(texto);
 Token t;
 
 while ((t = compilador.NextToken()) != null)
 {
-    Console.WriteLine(t.Id);
-    Console.WriteLine(t.Lexeme);
-    Console.WriteLine(t.Position);
-    Console.WriteLine();
+    var substring = texto.Substring(0, t.Position);
+    var linha = substring.Count(c => c == '\n') + 1;
+    var classe = FormatadorClasse.FormataClasse(t.Id);
+
+    Console.WriteLine($"{linha} {classe} {t.Lexeme}");
 }

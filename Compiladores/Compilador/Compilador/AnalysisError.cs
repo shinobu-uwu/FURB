@@ -2,7 +2,7 @@ namespace Compilador;
 
 public class AnalysisError : Exception
 {
-    private int Position { get; set; }
+    public int Position { get; set; }
 
     public AnalysisError(string msg, int position) : base(msg)
     {
