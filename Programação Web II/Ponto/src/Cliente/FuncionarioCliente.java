@@ -3,6 +3,7 @@ package Cliente;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import javax.xml.bind.ValidationException;
 import javax.xml.namespace.QName;
 import javax.xml.ws.Service;
 
@@ -30,8 +31,12 @@ public class FuncionarioCliente {
 		return funcionarioServer.ler(nomeFuncionario, nomeEmpresa);
 	}
 
-	public void atualizar(Funcionario funcionario, String nome) throws ParametroInvalidoException {
-		funcionarioServer.atualizar(funcionario, nome);
+	public void atualizar(Funcionario funcionario, Empresa empresa, String nome) throws ParametroInvalidoException, ValidationException {
+		funcionarioServer.atualizar(funcionario, empresa, nome);
+	}
+
+	public void remove(Funcionario funcionario, Empresa empresa) throws Exception {
+		funcionarioServer.deletar(empresa, funcionario);
 	}
 
 	public Empresa[] listarEmpresas(Funcionario funcionario) {

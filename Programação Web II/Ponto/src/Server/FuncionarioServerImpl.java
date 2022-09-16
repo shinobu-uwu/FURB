@@ -6,6 +6,7 @@ import Ponto.Funcionario;
 import Ponto.FuncionarioControle;
 
 import javax.jws.WebService;
+import javax.xml.bind.ValidationException;
 
 @WebService(name = "funcionario", endpointInterface = "Server.FuncionarioServer")
 public class FuncionarioServerImpl implements FuncionarioServer {
@@ -22,12 +23,12 @@ public class FuncionarioServerImpl implements FuncionarioServer {
     }
 
     @Override
-    public void atualizar(Funcionario funcionario, String nome) throws ParametroInvalidoException {
-        funcionarioControle.Editar(funcionario, nome);
+    public void atualizar(Funcionario funcionario, Empresa empresa, String nome) throws ParametroInvalidoException, ValidationException {
+        funcionarioControle.Editar(funcionario, empresa, nome);
     }
 
     @Override
-    public void deletar(Empresa empresa, Funcionario funcionario) {
+    public void deletar(Empresa empresa, Funcionario funcionario) throws Exception {
         funcionarioControle.Delete(empresa, funcionario);
     }
 

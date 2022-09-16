@@ -30,8 +30,8 @@ public class EmpresaServerImpl implements EmpresaServer {
     }
 
     @Override
-    public void atualizar(String nomeAntigo, String nome) throws ParametroInvalidoException {
-        empresaControle.Editar(nomeAntigo, nome);
+    public void atualizar(Empresa empresa, String nome) throws ParametroInvalidoException {
+        empresaControle.Editar(empresa, nome);
     }
 
     @Override

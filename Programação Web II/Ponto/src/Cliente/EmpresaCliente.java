@@ -31,8 +31,8 @@ public class EmpresaCliente {
         return empresaServer.lerTodas();
     }
 
-    public void atualizar(String nomeAntigo, String nome) throws ParametroInvalidoException {
-        empresaServer.atualizar(nomeAntigo, nome);
+    public void atualizar(Empresa empresa, String nome) throws ParametroInvalidoException {
+        empresaServer.atualizar(empresa, nome);
     }
 
     public void deletar(String nomeEmpresa) {

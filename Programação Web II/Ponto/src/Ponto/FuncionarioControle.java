@@ -2,6 +2,7 @@ package Ponto;
 
 import Exceptions.ParametroInvalidoException;
 
+import javax.xml.bind.ValidationException;
 import java.util.ArrayList;
 
 public class FuncionarioControle {
@@ -15,15 +16,17 @@ public class FuncionarioControle {
         emp.addFuncionario(new Funcionario(nome));
     }
 
-    public void Editar(Funcionario funcionario, String nome) throws ParametroInvalidoException {
+    public void Editar(Funcionario funcionario, Empresa empresa, String nome) throws ParametroInvalidoException, ValidationException {
         if (nome.isEmpty()) {
             throw new ParametroInvalidoException();
         }
+
+        empresaControle.alterarFuncionario(empresa, funcionario, nome);
         funcionario.setNome(nome);
     }
 
-    public void Delete(Empresa empresa, Funcionario func) {
-        empresa.RemoveFuncionario(func);
+    public void Delete(Empresa empresa, Funcionario funcionario) throws Exception {
+        empresaControle.removeFuncionario(empresa, funcionario);
     }
 
     public Funcionario Ler(String nome, String nomeEmpresa) throws Exception {

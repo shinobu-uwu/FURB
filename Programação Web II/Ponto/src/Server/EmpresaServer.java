@@ -22,7 +22,7 @@ public interface EmpresaServer {
     Empresa[] lerTodas();
 
     @WebMethod
-    void atualizar(String nomeAntigo, String nome) throws ParametroInvalidoException;
+    void atualizar(Empresa empresa, String nome) throws ParametroInvalidoException;
 
     @WebMethod
     void deletar(String nomeEmpresa);

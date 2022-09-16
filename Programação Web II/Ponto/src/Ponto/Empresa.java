@@ -35,6 +35,10 @@ public class Empresa {
     }
 
     public void RemoveFuncionario(Funcionario func) {
-        funcionarios.remove(func);
+        for (int i = 0; i < funcionarios.size(); i++) {
+            if (funcionarios.get(i).getNome().equals(func.getNome())) {
+                funcionarios.remove(i);
+            }
+        }
     }
 }
