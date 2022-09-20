@@ -22,6 +22,7 @@ public sealed class BotaoSalvar : BotaoBarraFerramentas
             }
 
             form.CaminhoArquivoAberto = dialog.FileName;
+            form.BarraStatus.Text = dialog.FileName;
         }
 
         File.WriteAllText(form.CaminhoArquivoAberto, form.TextoEditor.Text);

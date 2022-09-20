@@ -19,6 +19,7 @@ public sealed class BotaoAbrir : BotaoBarraFerramentas
             form.BarraStatus.Text = dialog.FileName;
             form.TextoEditor.Text = File.ReadAllText(dialog.FileName);
             form.BarraStatus.Text = dialog.FileName;
+            form.CaminhoArquivoAberto = dialog.FileName;
         }
 
         base.OnClick(e);

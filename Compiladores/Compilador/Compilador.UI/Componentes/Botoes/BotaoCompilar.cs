@@ -1,3 +1,6 @@
+using Compilador.Utils;
+using ConsoleTables;
+
 namespace Compilador.UI.Componentes.Botoes;
 
 public sealed class BotaoCompilar : BotaoBarraFerramentas
@@ -13,28 +16,38 @@ public sealed class BotaoCompilar : BotaoBarraFerramentas
         base.OnClick(e);
 
         var form = FormPrincipal.GetInstancia();
-        var lexico = form.Lexico;
+
+        // Se o arquivo não estiver salvo mandamos o usuário salvar
+        if (form.CaminhoArquivoAberto is null)
+        {
+            form.BarraFerramentas.BotaoSalvar.PerformClick();
+        }
 
         try
         {
-            Token t;
-            while ((t = lexico.NextToken()) is not null)
+            var compilador = form.Compilador;
+            compilador.Input = File.ReadAllText(form.CaminhoArquivoAberto);
+            var mensagem = $"{"Linha",-10} {"Classe",-30} {"Lexema",-20}\n";
+
+            foreach (var token in compilador.AnaliseLexica())
             {
-                var substring = form.TextoEditor.Text.Substring(0, t.Position);
+                var substring = form.TextoEditor.Text.Substring(0, token.Position);
                 var linha = substring.Count(c => c == '\n') + 1;
 
-                form.AreaMensagens.EscreverMensagem($"{linha} {t.Id} {t.Lexeme}");
+                mensagem += $"{linha,-10} {FormatadorClasse.FormataClasse(token.Id),-30} {token.Lexeme,-20}\n";
             }
+
+            form.AreaMensagens.EscreverMensagem(mensagem);
+            form.AreaMensagens.EscreverMensagem("Programa compilado com sucesso");
         }
-        catch (LexicalError e)
+        catch (LexicalException exception)
         {
-            var substring = form.TextoEditor.Text.Substring(0, e.Position);
+            var substring = form.TextoEditor.Text.Substring(0, exception.Position);
             var linha = substring.Count(c => c == '\n') + 1;
-            form.AreaMensagens.EscreverMensagem($"Erro na linha {linha}: {e.Message}");
-
-            return;
+            form.AreaMensagens.EscreverMensagem($"Erro na linha {linha}: {exception.Message}");
         }
-
-        form.AreaMensagens.EscreverMensagem("Programa compilado com sucesso");
+        catch (ArgumentNullException) // Ignoramos se o usuário clicar cancelar no dialog de salvar
+        {
+        }
     }
 }

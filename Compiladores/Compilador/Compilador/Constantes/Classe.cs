@@ -1,4 +1,4 @@
-namespace Compilador;
+namespace Compilador.Constantes;
 
 public enum Classe
 {

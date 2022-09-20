@@ -1,9 +1,11 @@
+using Compilador.Constantes;
+
 namespace Compilador;
 
 public class Lexico
 {
     private int Position;
-    private string Input;
+    public string Input { get; set; }
 
     public Lexico(string texto)
     {
@@ -42,7 +44,7 @@ public class Lexico
         }
 
         if (endState < 0 || (endState != state && TokenForState(lastState) == -2))
-            throw new LexicalError(ScannerConstants.ScannerError[lastState], start);
+            throw new LexicalException(ScannerConstants.ScannerError[lastState], start);
 
         Position = end;
 

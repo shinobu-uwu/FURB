@@ -14,8 +14,8 @@ public sealed class FormPrincipal : Form
     public readonly BarraStatus BarraStatus = new();
     public readonly AreaMensagens AreaMensagens = new();
     public readonly NumberedBorder NumberedBorder = new();
-    public readonly Lexico Lexico = new();
     public string? CaminhoArquivoAberto;
+    public readonly Compilador Compilador = new();
 
     public static FormPrincipal GetInstancia()
     {
@@ -37,7 +37,7 @@ public sealed class FormPrincipal : Form
         Controls.Add(AreaMensagens);
     }
 
-    protected override void OnKeyDown(KeyEventArgs e)
+    protected override void OnKeyUp(KeyEventArgs e)
     {
         // Para os atalhos apenas simulamos os cliques dos botões
         switch (e.KeyCode)
@@ -48,16 +48,22 @@ public sealed class FormPrincipal : Form
             case Keys.F1:
                 BarraFerramentas.BotaoEquipe.PerformClick();
                 break;
-            case Keys.Control:
-            case Keys.N:
-                BarraFerramentas.BotaoNovo.PerformClick();
-                break;
-            case Keys.O:
-                BarraFerramentas.BotaoAbrir.PerformClick();
-                break;
-            case Keys.S:
-                BarraFerramentas.BotaoSalvar.PerformClick();
-                break;
+        }
+
+        if (e.Modifiers == Keys.Control)
+        {
+            switch (e.KeyCode)
+            {
+                case Keys.N:
+                    BarraFerramentas.BotaoNovo.PerformClick();
+                    break;
+                case Keys.O:
+                    BarraFerramentas.BotaoAbrir.PerformClick();
+                    break;
+                case Keys.S:
+                    BarraFerramentas.BotaoSalvar.PerformClick();
+                    break;
+            }
         }
 
         base.OnKeyDown(e);

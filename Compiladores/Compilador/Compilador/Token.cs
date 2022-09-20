@@ -1,3 +1,5 @@
+using Compilador.Constantes;
+
 namespace Compilador;
 
 public class Token

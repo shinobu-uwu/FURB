@@ -2,9 +2,19 @@
 
 public class Compilador
 {
-    private readonly Lexico _lexico = new();
+    public string Input { get; set; }
 
-    public void AnaliseLexica(string input)
+    public IEnumerable<Token> AnaliseLexica()
     {
+        var lexico = new Lexico(Input);
+        var tokens = new List<Token>();
+        Token t;
+
+        while ((t = lexico.NextToken()) is not null)
+        {
+            tokens.Add(t);
+        }
+
+        return tokens;
     }
 }

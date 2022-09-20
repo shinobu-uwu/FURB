@@ -10,3 +10,15 @@
 /home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador/obj/Debug/net6.0/Compilador.dll
 /home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador/obj/Debug/net6.0/ref/Compilador.dll
 /home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador/obj/Debug/net6.0/Compilador.pdb
+C:\Users\Matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\bin\Debug\net6.0\Compilador.deps.json
+C:\Users\Matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\bin\Debug\net6.0\Compilador.dll
+C:\Users\Matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\bin\Debug\net6.0\Compilador.pdb
+C:\Users\Matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\obj\Debug\net6.0\Compilador.csproj.AssemblyReference.cache
+C:\Users\Matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\obj\Debug\net6.0\Compilador.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\obj\Debug\net6.0\Compilador.AssemblyInfoInputs.cache
+C:\Users\Matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\obj\Debug\net6.0\Compilador.AssemblyInfo.cs
+C:\Users\Matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\obj\Debug\net6.0\Compilador.csproj.CoreCompileInputs.cache
+C:\Users\Matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\obj\Debug\net6.0\Compilador.dll
+C:\Users\Matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\obj\Debug\net6.0\refint\Compilador.dll
+C:\Users\Matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\obj\Debug\net6.0\Compilador.pdb
+C:\Users\Matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\obj\Debug\net6.0\ref\Compilador.dll

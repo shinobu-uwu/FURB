@@ -1,4 +1,6 @@
-namespace Compilador;
+using Compilador.Constantes;
+
+namespace Compilador.Utils;
 
 public static class FormatadorClasse
 {
