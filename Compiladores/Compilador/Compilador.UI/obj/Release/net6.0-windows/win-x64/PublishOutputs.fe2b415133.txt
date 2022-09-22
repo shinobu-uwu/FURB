@@ -1,0 +1,7 @@
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador.UI\bin\Release\net6.0-windows\win-x64\publish\Compilador.UI.exe
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador.UI\bin\Release\net6.0-windows\win-x64\publish\Compilador.UI.dll
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador.UI\bin\Release\net6.0-windows\win-x64\publish\Compilador.UI.deps.json
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador.UI\bin\Release\net6.0-windows\win-x64\publish\Compilador.UI.runtimeconfig.json
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador.UI\bin\Release\net6.0-windows\win-x64\publish\Compilador.UI.pdb
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador.UI\bin\Release\net6.0-windows\win-x64\publish\Compilador.dll
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador.UI\bin\Release\net6.0-windows\win-x64\publish\Compilador.pdb

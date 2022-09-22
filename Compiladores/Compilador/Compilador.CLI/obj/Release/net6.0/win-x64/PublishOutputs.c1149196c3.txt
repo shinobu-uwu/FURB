@@ -1,0 +1,7 @@
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador.CLI\bin\Release\net6.0\win-x64\publish\Compilador.CLI.exe
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador.CLI\bin\Release\net6.0\win-x64\publish\Compilador.CLI.dll
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador.CLI\bin\Release\net6.0\win-x64\publish\Compilador.CLI.deps.json
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador.CLI\bin\Release\net6.0\win-x64\publish\Compilador.CLI.runtimeconfig.json
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador.CLI\bin\Release\net6.0\win-x64\publish\Compilador.CLI.pdb
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador.CLI\bin\Release\net6.0\win-x64\publish\Compilador.dll
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador.CLI\bin\Release\net6.0\win-x64\publish\Compilador.pdb

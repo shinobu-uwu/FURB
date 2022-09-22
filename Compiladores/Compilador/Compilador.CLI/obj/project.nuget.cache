@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "xpPEHZGvgkT4HyPPRnK9u0rSLw+8+Ii+eJlanm4fe16PfEE3G62+NATYJuarkx4KHwIIYeiB8Z9J/skZBcZtgw==",
+  "dgSpecHash": "OsLSctNnJb8+IL98/hdvMRaWOm4pz5NAwBOW0nxw7WgGRTo9q8sIPBY3qotcsK72ZhtCFhESBuz+m5oxgQP/Ng==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador.CLI\\Compilador.CLI.csproj",
+  "projectFilePath": "C:\\Users\\matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador.CLI\\Compilador.CLI.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

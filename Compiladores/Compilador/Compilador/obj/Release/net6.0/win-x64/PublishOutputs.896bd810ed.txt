@@ -1,0 +1,3 @@
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\bin\Release\net6.0\win-x64\publish\Compilador.dll
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\bin\Release\net6.0\win-x64\publish\Compilador.deps.json
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\bin\Release\net6.0\win-x64\publish\Compilador.pdb

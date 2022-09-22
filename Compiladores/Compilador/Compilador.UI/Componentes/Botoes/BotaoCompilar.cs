@@ -1,5 +1,4 @@
 using Compilador.Utils;
-using ConsoleTables;
 
 namespace Compilador.UI.Componentes.Botoes;
 

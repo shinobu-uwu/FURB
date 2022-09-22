@@ -12,7 +12,8 @@ public sealed class BotaoEquipe : BotaoBarraFerramentas
     {
         FormPrincipal.GetInstancia().AreaMensagens.EscreverMensagem(@"Integrantes da equipe:
 Matheus Filipe dos Santos Reinert
-Leonardo Linhares Silva");
+Leonardo Linhares Silva
+Vinícius Vanelli Silvestre Silva");
         base.OnClick(e);
     }
 }

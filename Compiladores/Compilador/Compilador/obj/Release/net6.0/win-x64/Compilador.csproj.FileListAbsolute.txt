@@ -1,0 +1,12 @@
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\bin\Release\net6.0\win-x64\Compilador.deps.json
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\bin\Release\net6.0\win-x64\Compilador.dll
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\bin\Release\net6.0\win-x64\Compilador.pdb
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\obj\Release\net6.0\win-x64\Compilador.csproj.AssemblyReference.cache
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\obj\Release\net6.0\win-x64\Compilador.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\obj\Release\net6.0\win-x64\Compilador.AssemblyInfoInputs.cache
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\obj\Release\net6.0\win-x64\Compilador.AssemblyInfo.cs
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\obj\Release\net6.0\win-x64\Compilador.csproj.CoreCompileInputs.cache
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\obj\Release\net6.0\win-x64\Compilador.dll
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\obj\Release\net6.0\win-x64\refint\Compilador.dll
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\obj\Release\net6.0\win-x64\Compilador.pdb
+C:\Users\matheus\RiderProjects\FURB\Compiladores\Compilador\Compilador\obj\Release\net6.0\win-x64\ref\Compilador.dll

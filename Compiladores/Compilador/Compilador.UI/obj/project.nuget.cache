@@ -1,19 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "D+ebGlH60TNdZneWvLKpYU+UQdKdGE4SQK7o0XvGbDEI7eN/GXSvEVfng4QspwwoxbScegxJX67iL4VoeTvDZg==",
+  "dgSpecHash": "UiftT2lJT8njJfV613Vn2gmOPD/77ihPQRacMUjy9mpAHgDEiQyhF8VFr4d/BeBfoTwFaIEz/m8BpK72H4ihtg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador.UI\\Compilador.UI.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\Matheus\\.nuget\\packages\\consoletables\\2.4.2\\consoletables.2.4.2.nupkg.sha512",
-    "C:\\Users\\Matheus\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
-    "C:\\Users\\Matheus\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
-    "C:\\Users\\Matheus\\.nuget\\packages\\system.io\\4.3.0\\system.io.4.3.0.nupkg.sha512",
-    "C:\\Users\\Matheus\\.nuget\\packages\\system.reflection\\4.3.0\\system.reflection.4.3.0.nupkg.sha512",
-    "C:\\Users\\Matheus\\.nuget\\packages\\system.reflection.primitives\\4.3.0\\system.reflection.primitives.4.3.0.nupkg.sha512",
-    "C:\\Users\\Matheus\\.nuget\\packages\\system.reflection.typeextensions\\4.3.0\\system.reflection.typeextensions.4.3.0.nupkg.sha512",
-    "C:\\Users\\Matheus\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
-    "C:\\Users\\Matheus\\.nuget\\packages\\system.text.encoding\\4.3.0\\system.text.encoding.4.3.0.nupkg.sha512",
-    "C:\\Users\\Matheus\\.nuget\\packages\\system.threading.tasks\\4.3.0\\system.threading.tasks.4.3.0.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador.UI\\Compilador.UI.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

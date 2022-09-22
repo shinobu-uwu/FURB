@@ -1,0 +1,37 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0/win-x64",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {},
+    ".NETCoreApp,Version=v6.0/win-x64": {
+      "Compilador.CLI/1.0.0": {
+        "dependencies": {
+          "Compilador": "1.0.0"
+        },
+        "runtime": {
+          "Compilador.CLI.dll": {}
+        }
+      },
+      "Compilador/1.0.0": {
+        "runtime": {
+          "Compilador.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Compilador.CLI/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Compilador/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
