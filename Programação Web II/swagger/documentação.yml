@@ -1,0 +1,355 @@
+openapi: 3.0.3
+info:
+  title: ava3
+  description: |-
+    O AVA3parou de funcionar e alguém removeu todos os serviços de back-end que haviam sido implementados para que o professor/aluno/secretáriospossa alimentar a página.
+  version: 2.0.11
+servers:
+  - url: https://ava3.furb.br/api/v2
+tags:
+  - name: alunos
+    description: Interage com os alunos do ava3
+  - name: turmas
+    description: Interage com as turmas do ava3
+paths:
+  /alunos:
+    get:
+      tags:
+        - alunos
+      summary: Retorna alunos cadastrados no ava3
+      description: Retorna alunos cadastrados no ava3
+      operationId: getAlunos
+      responses:
+        '200':
+          description: Operação bem sucedida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AlunoArray'
+        '204':
+          description: Nenhum usuário cadastrado
+        '401':
+          description: O usuário não possue permissão para acessar esse recurso
+    post:
+      tags:
+        - alunos
+      summary: Cadastra novo aluno no ava3
+      description: Cadastra novo aluno no ava3
+      operationId: addAluno
+      requestBody:
+        description: Aluno para ser cadastrado no ava3
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Aluno'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Aluno'
+        required: true
+      responses:
+        '201':
+          description: Aluno criado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Aluno'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Aluno'
+        '401':
+          description: Usuário não possui permissão para criar um novo aluno
+        '404':
+          description: Campo não encontrado
+    put:
+      tags:
+        - alunos
+      summary: Atualiza o aluno no ava3
+      description: Atualiza o aluno no ava3
+      operationId: updateAluno
+      requestBody:
+        description: Aluno com as mudanças a serem realizadas
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Aluno'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Aluno'
+        required: true
+      responses:
+        '200':
+          description: Aluno atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Aluno'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Aluno'
+        '400':
+          description: Algum campo está com erro
+        '401':
+          description: Usuário não possui permissão para atualizar um aluno
+        '404':
+          description: O aluno não existe
+  /alunos/{alunoId}:
+    delete:
+      tags:
+        - alunos
+      summary: Remove o aluno no ava3
+      description: Remove o aluno no ava3
+      operationId: deleteAluno
+      responses:
+        '204':
+          description: Aluno removido com sucesso
+        '401':
+          description: Usuário não possui permissão para remover um aluno
+        '404':
+          description: Aluno não encontrado
+      parameters:
+        - name: alunoId
+          in: path
+          description: ID do aluno a ser deletado
+          required: true
+          schema:
+            type: integer
+            format: int64
+  /turmas:
+    get:
+      tags:
+        - turmas
+      summary: Listar todas as turmas
+      description: Retorna uma lista com todas as turmas
+      operationId: getTurmas
+      responses:
+        '200':
+          description: Operação bem sucedida
+          content:
+            application/json:
+              schema:
+                schema:
+                $ref: '#/components/schemas/TurmaArray'   
+        '204':
+          description: Nenhuma Turma cadastrada
+        '401':
+          description: O usuário não possui permissão para acessar esse recurso
+     
+    post:
+      tags:
+        - turmas
+      summary: Criar uma nova turma
+      description: Cria uma nova turma
+      operationId: novaTurma
+      responses:
+        '201':
+          description: Turma criada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TurmaArray'   
+        '400':
+          description: Parametro inválido
+        '401':
+          description: Sem permissão para criar turma
+    put:
+      tags:
+        - turmas
+      summary: Modifique a turma
+      description: Atualize informações da turma
+      operationId: putTurma
+      responses:
+        '201':
+          description: Atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Turma'
+        '400':
+          description: Parâmetro inválido
+        '401':
+          description: Sem permissão para atualizar
+        '404':
+          description: A turma não existe
+  /turmas/{turmaID}:
+    delete:
+      tags:
+        - turmas
+      summary: Delete a Turma
+      description: Deleta, turma vai de comes e bebes
+      operationId: deletarTurma
+      parameters:
+        - n4me: turmaID
+          in: path
+          description: ID da turma a ser deletado
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: Deletado com sucesso
+        '400':
+          description: Parâmetro inválido
+        '401':
+          description: Sem permissão para deletar
+        '404':
+          description: Recurso não encontrado
+  /disciplinas:
+    get:
+      tags:
+        - disciplinas
+      summary: Retorna disciplinas cadastrados no ava3
+      description: Retorna disciplinas cadastrados no ava3
+      operationId: getDisciplinas
+      responses:
+        '200':
+          description: Operação bem sucedida
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/DisciplinaArray'
+        '204':
+          description: Nenhuma disciplina cadastrada
+        '401':
+          description: O usuário não possue permissão para acessar esse recurso
+    post:
+      tags:
+        - disciplinas
+      summary: Cadastra nova disciplina no ava3
+      description: Cadastra nova disciplina no ava3
+      operationId: addDisciplina
+      requestBody:
+        description: Disciplina para ser cadastrada no ava3
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Disciplina'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Disciplina'
+        required: true
+      responses:
+        '201':
+          description: Disciplina criada com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Disciplina'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Disciplina'
+        '401':
+          description: Usuário não possui permissão para criar um novo aluno
+    put:
+      tags:
+        - disciplinas
+      summary: Atualiza a disciplina no ava3
+      description: Atualiza a disciplina no ava3
+      operationId: updateDisciplina
+      requestBody:
+        description: Disciplina com as mudanças a serem realizadas
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Disciplina'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Disciplina'
+        required: true
+      responses:
+        '200':
+          description: Disciplina atualizado com sucesso
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Disciplina'          
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Disciplina'
+        '400':
+          description: Algum campo está com erro
+        '401':
+          description: Usuário não possui permissão para atualizar um aluno
+        '404':
+          description: Disciplina não encontrada (ID inválido)
+  /disciplinas/{disciplinaId}:
+    delete:
+      tags:
+        - disciplinas
+      summary: Remove a disciplina no ava3
+      description: Remove a disciplina no ava3
+      operationId: deleteDisciplina
+      responses:
+        '204':
+          description: Disciplina removida com sucesso
+        '401':
+          description: Usuário não possui permissão para remover essa disciplina
+        '404':
+          description: Disciplina não encontrada (ID inválido)
+      parameters:
+        - name: disciplinaId
+          in: path
+          description: ID da disciplina a ser deletada
+          required: true
+          schema:
+            type: integer
+            format: int64
+components:
+  schemas:
+    Aluno:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 192
+        nome:
+          type: string
+          example: Matheus
+        situacaoRegular:
+          type: boolean
+      xml:
+        name: aluno
+    AlunoArray:
+      description: Lista de objetos do tipo Aluno
+      type: array
+      items:
+        $ref: '#/components/schemas/Aluno'
+    Turma:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 1
+        nome:
+          type: string
+          example: 170.2.2-2022/2
+        disciplina:
+          $ref: '#/components/schemas/Disciplina'
+        alunos:
+          $ref: '#/components/schemas/AlunoArray'
+      xml:
+        name: turma
+    TurmaArray:
+      description: Lista de Todas as Turmas
+      type: array
+      items:
+        $ref: '#/components/schemas/Turma'
+    Disciplina:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 123
+        nome:
+          type: string
+          example: Programação web II
+      xml:
+        name: disciplina
+    DisciplinaArray:
+      description: Lista de disciplinas
+      type: array
+      items:
+        $ref: '#/components/schemas/Disciplina'
