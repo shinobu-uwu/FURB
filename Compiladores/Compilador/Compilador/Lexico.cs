@@ -18,7 +18,7 @@ public class Lexico
         Position = 0;
     }
 
-    public Token NextToken()
+    public Token? NextToken()
     {
         if (!HasInput())
             return null;

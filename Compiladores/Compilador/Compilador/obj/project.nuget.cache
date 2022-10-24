@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "rSH7Vt1yHlmoiBRQee2YZ2a3eYnD2EJxuFvMagboKcJ+6ZPbTSWY80ai1ZPTAOexoM/pqiIE76fX0xmIPS4v7Q==",
+  "dgSpecHash": "d6hoJvqJpXes5gWgf7+pBsG/GBY0pkFnHcpyboMrf9Kddkloe6tbWrnM1QpAn8jGX6H7jwaGNyBxC6cqZpXEJQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador\\Compilador.csproj",
+  "projectFilePath": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador/Compilador.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

@@ -1,20 +1,9 @@
 ﻿using Compilador;
-using Compilador.Utils;
 
-var texto = @"
-[
-isso é um comentário
-]
-break area (
-1.1d10";
-var compilador = new Lexico(texto);
-Token t;
+var texto =
+    "fun main { var lado: int; readln (\"digite o lado do quadrado: \", lado); area = lado * lado; print (area); }";
+var lexico = new Lexico(texto);
+var sintatico = new Sintatico();
+var semantico = new Semantico();
 
-while ((t = compilador.NextToken()) != null)
-{
-    var substring = texto.Substring(0, t.Position);
-    var linha = substring.Count(c => c == '\n') + 1;
-    var classe = FormatadorClasse.FormataClasse(t.Id);
-
-    Console.WriteLine($"{linha} {classe} {t.Lexeme}");
-}
+sintatico.Parse(lexico, semantico);
