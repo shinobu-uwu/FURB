@@ -6,7 +6,7 @@ namespace Compilador;
 public class Sintatico
 {
     private readonly Stack _stack = new Stack();
-    private Token? _currentToken;
+    public Token? CurrentToken { get; set; }
     private Token? _previousToken;
     private Lexico _scanner;
     private Semantico _semanticAnalyser;
@@ -28,17 +28,17 @@ public class Sintatico
 
     private bool Step()
     {
-        if (_currentToken is null)
+        if (CurrentToken is null)
         {
             var pos = 0;
             if (_previousToken is not null)
                 pos = _previousToken.Position + _previousToken.Lexeme.Length;
 
-            _currentToken = new Token(Classe.Dollar, "$", pos);
+            CurrentToken = new Token(Classe.Dollar, "$", pos);
         }
 
         var x = (Classe)_stack.Pop();
-        var a = _currentToken.Id;
+        var a = CurrentToken.Id;
 
         if (x == Classe.Epsilon)
         {
@@ -55,12 +55,12 @@ public class Sintatico
                         return true;
                     }
 
-                    _previousToken = _currentToken;
-                    _currentToken = _scanner.NextToken();
+                    _previousToken = CurrentToken;
+                    CurrentToken = _scanner.NextToken();
                     return false;
                 }
 
-                throw new SyntaticException(ParserConstants.PARSER_ERROR[(int)x], _currentToken.Position);
+                throw new SyntaticException(ParserConstants.PARSER_ERROR[(int)x], CurrentToken.Position);
             }
             
             if (IsNonTerminal(x))
@@ -70,7 +70,7 @@ public class Sintatico
                     return false;
                 }
 
-                throw new SyntaticException(ParserConstants.PARSER_ERROR[(int)x], _currentToken.Position);
+                throw new SyntaticException(ParserConstants.PARSER_ERROR[(int)x], CurrentToken.Position);
             }
 
             _semanticAnalyser.ExecuteAction(x - ParserConstants.FIRST_SEMANTIC_ACTION, _previousToken);
@@ -105,7 +105,7 @@ public class Sintatico
         _stack.Push((int)Classe.Dollar);
         _stack.Push(ParserConstants.START_SYMBOL);
 
-        _currentToken = scanner.NextToken();
+        CurrentToken = scanner.NextToken();
 
         while (!Step())
         {

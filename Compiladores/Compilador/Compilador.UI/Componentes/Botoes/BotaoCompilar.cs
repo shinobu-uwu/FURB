@@ -15,6 +15,7 @@ public sealed class BotaoCompilar : BotaoBarraFerramentas
         base.OnClick(e);
 
         var form = FormPrincipal.GetInstancia();
+        var compilador = form.Compilador;
 
         // Se o arquivo não estiver salvo mandamos o usuário salvar
         if (form.CaminhoArquivoAberto is null)
@@ -24,19 +25,8 @@ public sealed class BotaoCompilar : BotaoBarraFerramentas
 
         try
         {
-            var compilador = form.Compilador;
             compilador.Input = File.ReadAllText(form.CaminhoArquivoAberto);
-            var mensagem = $"{"Linha",-10} {"Classe",-30} {"Lexema",-20}\n";
 
-            foreach (var token in compilador.AnaliseLexica())
-            {
-                var substring = form.TextoEditor.Text.Substring(0, token.Position);
-                var linha = substring.Count(c => c == '\n') + 1;
-
-                mensagem += $"{linha,-10} {FormatadorClasse.FormataClasse(token.Id),-30} {token.Lexeme,-20}\n";
-            }
-
-            form.AreaMensagens.EscreverMensagem(mensagem);
             form.AreaMensagens.EscreverMensagem("Programa compilado com sucesso");
         }
         catch (LexicalException exception)
@@ -44,6 +34,14 @@ public sealed class BotaoCompilar : BotaoBarraFerramentas
             var substring = form.TextoEditor.Text.Substring(0, exception.Position);
             var linha = substring.Count(c => c == '\n') + 1;
             form.AreaMensagens.EscreverMensagem($"Erro na linha {linha}: {exception.Message}");
+        }
+        catch (SyntaticException exception)
+        {
+            var substring = form.TextoEditor.Text.Substring(0, exception.Position);
+            var linha = substring.Count(c => c == '\n') + 1;
+            form.AreaMensagens.EscreverMensagem(
+                $"Erro na linha {linha}: encontrado {compilador.CurrentToken?.Lexeme} esperado {exception.Message}"
+            );
         }
         catch (ArgumentNullException) // Ignoramos se o usuário clicar cancelar no dialog de salvar
         {

@@ -3,18 +3,19 @@
 public class Compilador
 {
     public string Input { get; set; }
+    public Token? CurrentToken { get => _sintatico.CurrentToken; }
 
-    public IEnumerable<Token?> AnaliseLexica()
+    private Lexico _lexico;
+    private Sintatico _sintatico = new();
+    private Semantico _semantico = new();
+
+    public Compilador(string input)
     {
-        var lexico = new Lexico(Input);
-        var tokens = new List<Token?>();
-        Token? t;
+        _lexico = new Lexico(input);
+    }
 
-        while ((t = lexico.NextToken()) is not null)
-        {
-            tokens.Add(t);
-        }
-
-        return tokens;
+    public void Compilar()
+    {
+        _sintatico.Parse(_lexico, _semantico);
     }
 }
