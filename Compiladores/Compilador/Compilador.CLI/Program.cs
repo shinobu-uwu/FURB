@@ -1,11 +1,12 @@
 ﻿using Compilador;
 
 var texto =
-    "fun main { var lado: int; readln (\"digite o lado do quadrado: \", lado) area = lado * lado; print area); }";
-var compilador = new Compilador.Compilador(texto);
+    "fun main {\n var lado: int;\n readln (\"digite o lado do quadrado: \", lado)\n area = lado * lado;\n print area);\n }";
+var compilador = new Compilador.Compilador();
 
 try
 {
+    compilador.Input = texto;
     compilador.Compilar();
 }
 catch (SyntaticException e)

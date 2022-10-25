@@ -15,7 +15,6 @@ public sealed class FormPrincipal : Form
     public readonly AreaMensagens AreaMensagens = new();
     public readonly NumberedBorder NumberedBorder = new();
     public string? CaminhoArquivoAberto;
-    public readonly Compilador Compilador = new();
 
     public static FormPrincipal GetInstancia()
     {

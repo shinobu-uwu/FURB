@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador.UI/Compilador.UI.csproj": {}
+    "C:\\Users\\matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador.UI\\Compilador.UI.csproj": {}
   },
   "projects": {
-    "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador.UI/Compilador.UI.csproj": {
+    "C:\\Users\\matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador.UI\\Compilador.UI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador.UI/Compilador.UI.csproj",
+        "projectUniqueName": "C:\\Users\\matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador.UI\\Compilador.UI.csproj",
         "projectName": "Compilador.UI",
-        "projectPath": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador.UI/Compilador.UI.csproj",
-        "packagesPath": "/home/shinobu/.nuget/packages/",
-        "outputPath": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador.UI/obj/",
+        "projectPath": "C:\\Users\\matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador.UI\\Compilador.UI.csproj",
+        "packagesPath": "C:\\Users\\matheus\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador.UI\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/shinobu/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\matheus\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0-windows"
@@ -26,8 +26,8 @@
           "net6.0-windows7.0": {
             "targetAlias": "net6.0-windows",
             "projectReferences": {
-              "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador/Compilador.csproj": {
-                "projectPath": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador/Compilador.csproj"
+              "C:\\Users\\matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador\\Compilador.csproj": {
+                "projectPath": "C:\\Users\\matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador\\Compilador.csproj"
               }
             }
           }
@@ -47,30 +47,34 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
           "frameworkReferences": {
             "Microsoft.NETCore.App": {
               "privateAssets": "all"
+            },
+            "Microsoft.WindowsDesktop.App.WindowsForms": {
+              "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.110/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador/Compilador.csproj": {
+    "C:\\Users\\matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador\\Compilador.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador/Compilador.csproj",
+        "projectUniqueName": "C:\\Users\\matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador\\Compilador.csproj",
         "projectName": "Compilador",
-        "projectPath": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador/Compilador.csproj",
-        "packagesPath": "/home/shinobu/.nuget/packages/",
-        "outputPath": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador/obj/",
+        "projectPath": "C:\\Users\\matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador\\Compilador.csproj",
+        "packagesPath": "C:\\Users\\matheus\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/shinobu/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\matheus\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -99,7 +103,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -108,7 +113,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.110/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }

@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "/home/shinobu/.nuget/packages/": {}
+    "C:\\Users\\matheus\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador/Compilador.csproj",
+      "projectUniqueName": "C:\\Users\\matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador\\Compilador.csproj",
       "projectName": "Compilador",
-      "projectPath": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador/Compilador.csproj",
-      "packagesPath": "/home/shinobu/.nuget/packages/",
-      "outputPath": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador/obj/",
+      "projectPath": "C:\\Users\\matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador\\Compilador.csproj",
+      "packagesPath": "C:\\Users\\matheus\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/shinobu/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\matheus\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -49,7 +49,8 @@
           "net47",
           "net471",
           "net472",
-          "net48"
+          "net48",
+          "net481"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -58,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/6.0.110/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
       }
     }
   }

@@ -15,7 +15,7 @@ public sealed class BotaoCompilar : BotaoBarraFerramentas
         base.OnClick(e);
 
         var form = FormPrincipal.GetInstancia();
-        var compilador = form.Compilador;
+        var compilador = new Compilador();
 
         // Se o arquivo não estiver salvo mandamos o usuário salvar
         if (form.CaminhoArquivoAberto is null)
@@ -26,7 +26,7 @@ public sealed class BotaoCompilar : BotaoBarraFerramentas
         try
         {
             compilador.Input = File.ReadAllText(form.CaminhoArquivoAberto);
-
+            compilador.Compilar();
             form.AreaMensagens.EscreverMensagem("Programa compilado com sucesso");
         }
         catch (LexicalException exception)

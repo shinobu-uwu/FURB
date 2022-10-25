@@ -44,43 +44,42 @@ public class Sintatico
         {
             return false;
         }
-        else
+
+        if (IsTerminal(x))
         {
-            if (IsTerminal(x))
+            if (x == a)
             {
-                if (x == a)
+                if (_stack.Count == 0)
                 {
-                    if (_stack.Count == 0)
-                    {
-                        return true;
-                    }
-
-                    _previousToken = CurrentToken;
-                    CurrentToken = _scanner.NextToken();
-                    return false;
+                    return true;
                 }
 
-                throw new SyntaticException(ParserConstants.PARSER_ERROR[(int)x], CurrentToken.Position);
-            }
-            
-            if (IsNonTerminal(x))
-            {
-                if (PushProduction((int)x, (int)a))
-                {
-                    return false;
-                }
-
-                throw new SyntaticException(ParserConstants.PARSER_ERROR[(int)x], CurrentToken.Position);
+                _previousToken = CurrentToken;
+                CurrentToken = _scanner.NextToken();
+                return false;
             }
 
-            _semanticAnalyser.ExecuteAction(x - ParserConstants.FIRST_SEMANTIC_ACTION, _previousToken);
-            return false;
+            throw new SyntaticException(ParserConstants.PARSER_ERROR[(int)x], CurrentToken.Position);
         }
+            
+        if (IsNonTerminal(x))
+        {
+            if (PushProduction((int)x, (int)a))
+            {
+                return false;
+            }
+
+            throw new SyntaticException(ParserConstants.PARSER_ERROR[(int)x], CurrentToken.Position);
+        }
+
+        _semanticAnalyser.ExecuteAction(x - ParserConstants.FIRST_SEMANTIC_ACTION, _previousToken);
+        return false;
     }
 
     private bool PushProduction(int topStack, int tokenInput)
     {
         var p = ParserConstants.PARSER_TABLE[topStack - ParserConstants.FIRST_NON_TERMINAL][tokenInput - 1];
+        
         if (p >= 0)
         {
             var production = ParserConstants.PRODUCTIONS[p];

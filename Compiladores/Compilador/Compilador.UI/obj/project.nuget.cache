@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ayoWuTl6103+pXFnoZWKzg910PrY0iAIoYrNjP6/o4gjjJw7wl+AEj8SYfMlQjjzHR0zJsEcuJeg6WGA5Rk0Aw==",
+  "dgSpecHash": "TkzHR/zdwSa3Z1RQ6eTAiZMlH17J6umK0A5coy4Mr3YZddvqiaQKO89kK2i7bRvIAhViKtq9B4DPYdsXFVfXhQ==",
   "success": true,
-  "projectFilePath": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador.UI/Compilador.UI.csproj",
+  "projectFilePath": "C:\\Users\\matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador.UI\\Compilador.UI.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }
