@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface AutorRepository extends CrudRepository<Autor, Integer> {
     Iterable<Autor> findAll();
+    Autor save(Autor autor);
 }

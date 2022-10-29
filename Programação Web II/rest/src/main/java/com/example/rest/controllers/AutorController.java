@@ -3,6 +3,8 @@ package com.example.rest.controllers;
 import com.example.rest.entities.Autor;
 import com.example.rest.repositories.AutorRepository;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -16,5 +18,10 @@ public class AutorController {
     @GetMapping("/autores")
     Iterable<Autor> getAutores() {
         return autorRepository.findAll();
+    }
+
+    @PostMapping("/autores")
+    Autor getAutores(@RequestBody Autor autor) {
+        return autorRepository.save(autor);
     }
 }

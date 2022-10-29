@@ -3,6 +3,8 @@ package com.example.rest.controllers;
 import com.example.rest.entities.Post;
 import com.example.rest.repositories.PostRepository;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -16,5 +18,10 @@ public class PostController {
     @GetMapping("/posts")
     Iterable<Post> getPosts() {
         return postRepository.findAll();
+    }
+
+    @PostMapping("/posts")
+    Post getPosts(@RequestBody Post post) {
+        return postRepository.save(post);
     }
 }
