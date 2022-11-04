@@ -84,4 +84,8 @@ public class Post {
     public void setCategorias(Set<Categoria> categorias) {
         this.categorias = categorias;
     }
+
+    public void addCategoria(Categoria categoria) {
+        categorias.add(categoria);
+    }
 }
