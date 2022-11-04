@@ -35,8 +35,12 @@ public class PostController {
         Optional<Post> post = postRepository.findById(postId);
         Optional<Categoria> categoria = categoriaRepository.findById(categoriaId);
 
-        if (post.isEmpty() || categoria.isEmpty()) {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Não foi possível encontrar o post ou a categoria");
+        if (post.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Não foi possível encontrar o post");
+        }
+
+        if (categoria.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Não foi possível encontrar a categoria");
         }
 
         post.get().addCategoria(categoria.get());
