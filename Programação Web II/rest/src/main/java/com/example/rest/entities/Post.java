@@ -2,6 +2,7 @@ package com.example.rest.entities;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Set;
 
 @Entity
 @Table(name = "posts")
@@ -17,10 +18,19 @@ public class Post {
     private Autor autor;
     private Date dataCriacao = new Date(System.currentTimeMillis());
 
-    public Post(String titulo, String texto, Autor autor) {
+    @ManyToMany(targetEntity = Categoria.class)
+    @JoinTable(
+            name = "post_categoria",
+            joinColumns = { @JoinColumn(name = "id_post") },
+            inverseJoinColumns = {@JoinColumn(name = "id_categoria")}
+    )
+    private Set<Categoria> categorias;
+
+    public Post(String titulo, String texto, Autor autor, Set<Categoria> categorias) {
         this.titulo = titulo;
         this.texto = texto;
         this.autor = autor;
+        this.categorias = categorias;
     }
 
     public Post() {
@@ -65,5 +75,13 @@ public class Post {
 
     public void setDataCriacao(Date dataCriacao) {
         this.dataCriacao = dataCriacao;
+    }
+
+    public Set<Categoria> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(Set<Categoria> categorias) {
+        this.categorias = categorias;
     }
 }
