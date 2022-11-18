@@ -1,8 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "IdPAYX61BdVZ0ZhE//JRQcZFm83PHnZqHvlu2y92Ao3UyUkVdPfib/msSIpUt0RlPA0yXJPtKVtry4vZ+h6TeQ==",
+  "dgSpecHash": "s987m7Xq5B+oc0/G1sje7DMeW6h++DrKMwOCiw9ragbIQzeHkx6vxjLG6Dzq/QSpofUDgSOn8ydm9luH/PskGw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador\\Compilador.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador/Compilador.csproj",
+  "expectedPackageFiles": [
+    "/home/shinobu/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.11/microsoft.aspnetcore.app.ref.6.0.11.nupkg.sha512"
+  ],
   "logs": []
 }

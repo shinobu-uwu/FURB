@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\matheus\\.nuget\\packages\\": {}
+    "/home/shinobu/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador\\Compilador.csproj",
+      "projectUniqueName": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador/Compilador.csproj",
       "projectName": "Compilador",
-      "projectPath": "C:\\Users\\matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador\\Compilador.csproj",
-      "packagesPath": "C:\\Users\\matheus\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\matheus\\RiderProjects\\FURB\\Compiladores\\Compilador\\Compilador\\obj\\",
+      "projectPath": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador/Compilador.csproj",
+      "packagesPath": "/home/shinobu/.nuget/packages/",
+      "outputPath": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\matheus\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/shinobu/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -54,12 +54,18 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
+        "downloadDependencies": [
+          {
+            "name": "Microsoft.AspNetCore.App.Ref",
+            "version": "[6.0.11, 6.0.11]"
+          }
+        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
       }
     }
   }

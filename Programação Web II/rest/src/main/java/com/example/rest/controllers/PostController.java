@@ -1,7 +1,10 @@
 package com.example.rest.controllers;
 
+import com.example.rest.dao.InsercaoPostDAO;
+import com.example.rest.entities.Autor;
 import com.example.rest.entities.Categoria;
 import com.example.rest.entities.Post;
+import com.example.rest.repositories.AutorRepository;
 import com.example.rest.repositories.CategoriaRepository;
 import com.example.rest.repositories.PostRepository;
 import org.springframework.http.HttpStatus;
@@ -12,12 +15,14 @@ import java.util.Optional;
 
 @RestController
 public class PostController {
-    private PostRepository postRepository;
-    private CategoriaRepository categoriaRepository;
+    private final AutorRepository autorRepository;
+    private final PostRepository postRepository;
+    private final CategoriaRepository categoriaRepository;
 
-    public PostController(PostRepository postRepository, CategoriaRepository categoriaRepository) {
+    public PostController(PostRepository postRepository, CategoriaRepository categoriaRepository, AutorRepository autorRepository) {
         this.postRepository = postRepository;
         this.categoriaRepository = categoriaRepository;
+        this.autorRepository = autorRepository;
     }
 
     @GetMapping("/posts")
@@ -25,9 +30,26 @@ public class PostController {
         return postRepository.findAll();
     }
 
+    @GetMapping("/posts/{id}")
+    Post getPost(@PathVariable Integer id) {
+        Optional<Post> post = postRepository.findById(id);
+
+        if (post.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi possível encontrar o post");
+        }
+
+        return post.get();
+    }
+
     @PostMapping("/posts")
-    Post getPosts(@RequestBody Post post) {
-        return postRepository.save(post);
+    Post getPosts(@RequestBody InsercaoPostDAO postDAO) {
+        Optional<Autor> autor = autorRepository.findById(postDAO.getAutorId());
+
+        if (autor.isEmpty()) {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi possível encontrar o autor");
+        }
+
+        return postRepository.save(new Post(postDAO.getTitulo(), postDAO.getTexto(), autor.get(), postDAO.getCategorias()));
     }
 
     @PostMapping("/posts/{postId}/categoria/{categoriaId}")

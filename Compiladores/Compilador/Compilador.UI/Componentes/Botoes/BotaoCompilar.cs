@@ -39,8 +39,15 @@ public sealed class BotaoCompilar : BotaoBarraFerramentas
         {
             var substring = form.TextoEditor.Text.Substring(0, exception.Position);
             var linha = substring.Count(c => c == '\n') + 1;
+            var lexema = compilador.CurrentToken?.Lexeme;
+
+            if (lexema == "$")
+            {
+                lexema = "EOF";
+            }
+            
             form.AreaMensagens.EscreverMensagem(
-                $"Erro na linha {linha}: encontrado {compilador.CurrentToken?.Lexeme} esperado {exception.Message}"
+                $"Erro na linha {linha}: encontrado {lexema} {exception.Message}"
             );
         }
         catch (ArgumentNullException) // Ignoramos se o usuário clicar cancelar no dialog de salvar
