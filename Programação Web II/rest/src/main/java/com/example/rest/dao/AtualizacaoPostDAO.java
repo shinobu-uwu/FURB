@@ -2,7 +2,9 @@ package com.example.rest.dao;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class InsercaoPostDAO {
+public class AtualizacaoPostDAO {
+    @JsonProperty(value = "id", required = true)
+    private Integer id;
     @JsonProperty(value = "titulo", required = true)
     private String titulo;
     @JsonProperty(value = "texto", required = true)
@@ -11,6 +13,14 @@ public class InsercaoPostDAO {
     private String[] categorias;
     @JsonProperty(value = "autor", required = true)
     private Integer autorId;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getTitulo() {
         return titulo;

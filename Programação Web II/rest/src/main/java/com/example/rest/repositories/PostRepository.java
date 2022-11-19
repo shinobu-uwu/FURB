@@ -6,5 +6,6 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface PostRepository extends CrudRepository<Post, Integer> {
     Iterable<Post> findAll();
-    Iterable<Post> findAllByCategoriasContaining(Categoria categoria);
+    Iterable<Post> findAllByTituloContaining(String titulo);
+    Iterable<Post> findAllByTextoContaining(String texto);
 }
