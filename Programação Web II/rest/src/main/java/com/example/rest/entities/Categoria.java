@@ -1,7 +1,6 @@
 package com.example.rest.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import java.util.Set;
 
@@ -11,6 +10,7 @@ public class Categoria {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false)
     private Integer id;
+    private String descricao;
     private String nome;
     @ManyToMany(mappedBy = "categorias")
     @JsonIgnore
@@ -39,4 +39,13 @@ public class Categoria {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public String getDescricao() {
+        return this.descricao;
+    }
+
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+
 }

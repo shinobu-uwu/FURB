@@ -1,7 +1,7 @@
 ﻿using Compilador;
 
 var texto =
-    "fun main {\n var lado: int;\n readln (\"digite o lado do quadrado: \", lado)\n area = lado * lado;\n print area);\n }";
+    "fun main { var a = 2; var b = 3; println(a + b) }";
 var compilador = new Compilador.Compilador();
 
 try

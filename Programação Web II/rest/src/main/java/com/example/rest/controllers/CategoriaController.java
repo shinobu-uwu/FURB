@@ -42,4 +42,25 @@ public class CategoriaController {
         System.out.println(nome);
         return categoriaRepository.findCategoriasByNome(nome);
     }
+
+    @DeleteMapping("/categorias/{id}")
+    void DeleteCategoria(@PathVariable Integer id) {
+        boolean existe = categoriaRepository.existsById(id);
+
+        if (existe) {
+            categoriaRepository.deleteById(id);
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Não foi possível encontrar o a categoria");
+        }
+
+    }
+
+    @PutMapping("/categorias")
+    Categoria CriarCategoria(@RequestBody Categoria categoria) {
+        if (categoria.getId() != null) {
+            return categoriaRepository.save(categoria);
+        } else {
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "O id informado não foi encontrado");
+        }
+    }
 }

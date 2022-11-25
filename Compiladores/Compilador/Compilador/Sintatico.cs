@@ -5,7 +5,7 @@ namespace Compilador;
 
 public class Sintatico
 {
-    private readonly Stack _stack = new Stack();
+    private readonly Stack _stack = new();
     public Token? CurrentToken { get; set; }
     private Token? _previousToken;
     private Lexico _scanner;
@@ -72,7 +72,7 @@ public class Sintatico
             throw new SyntaticException(ParserConstants.PARSER_ERROR[(int)x], CurrentToken.Position);
         }
 
-        _semanticAnalyser.ExecuteAction(x - ParserConstants.FIRST_SEMANTIC_ACTION, _previousToken);
+        _semanticAnalyser.ExecuteAction((int)x - ParserConstants.FIRST_SEMANTIC_ACTION, _previousToken);
         return false;
     }
 
