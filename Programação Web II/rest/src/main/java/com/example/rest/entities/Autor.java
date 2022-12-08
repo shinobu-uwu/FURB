@@ -12,7 +12,6 @@ public class Autor  {
     private Integer id;
     private String nome;
     private String descricao;
-    private Date dataCriacao = new Date(System.currentTimeMillis());
 
 
     public Autor(String nome, String descricao) {
@@ -46,13 +45,5 @@ public class Autor  {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
-    }
-
-    public Date getDataCriacao() {
-        return dataCriacao;
-    }
-
-    public void setDataCriacao(Date dataCriacao) {
-        this.dataCriacao = dataCriacao;
     }
 }

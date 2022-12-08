@@ -106,7 +106,6 @@ public class PostController {
 
         Post post = new Post(postDAO.getTitulo(), postDAO.getTexto(), getAutor(postDAO.getAutorId()), getCategorias(postDAO.getCategorias()));
         post.setId(postDAO.getId());
-        post.setDataCriacao(postAntigo.get().getDataCriacao());
 
         return postRepository.save(post);
     }

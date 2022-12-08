@@ -16,7 +16,6 @@ public class Post {
     @ManyToOne
     @JoinColumn(name = "autor_id")
     private Autor autor;
-    private Date dataCriacao = new Date(System.currentTimeMillis());
 
     @ManyToMany(targetEntity = Categoria.class)
     @JoinTable(
@@ -67,14 +66,6 @@ public class Post {
 
     public void setAutor(Autor autor) {
         this.autor = autor;
-    }
-
-    public Date getDataCriacao() {
-        return dataCriacao;
-    }
-
-    public void setDataCriacao(Date dataCriacao) {
-        this.dataCriacao = dataCriacao;
     }
 
     public Set<Categoria> getCategorias() {
