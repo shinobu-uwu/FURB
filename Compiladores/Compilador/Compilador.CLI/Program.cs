@@ -1,19 +1,21 @@
 ﻿using Compilador;
+using Compilador.Exceptions;
 
-var texto =
-    "fun main { var a = 2; var b = 3; println(a + b) }";
-var compilador = new Compilador.Compilador();
+var texto = File.ReadAllText(@"C:\Users\shinobu\Desktop\teste.txt");
+Console.WriteLine(texto);
+var lexico = new Lexico(texto);
+var sintatico = new Sintatico();
+var semantico = new Semantico();
 
 try
 {
-    compilador.Input = texto;
-    compilador.Compilar();
+    sintatico.Parse(lexico, semantico);
+    File.WriteAllText(@"C:\Users\shinobu\Desktop\teste.il", string.Join('\n', semantico.Codigo));
 }
-catch (SyntaticException e)
+catch (AnalysisException e)
 {
     var substring = texto.Substring(0, e.Position);
     var linha = substring.Count(c => c == '\n') + 1;
-    Console.WriteLine(
-        $"Erro na linha {linha}: encontrado {compilador.CurrentToken?.Lexeme} {e.Message}"
-    );
+    Console.WriteLine ($"Erro na linha {linha}: {e.Message}\n{sintatico.CurrentToken}");
+    Console.WriteLine(e);
 }

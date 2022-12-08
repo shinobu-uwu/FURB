@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "MowAzFJH9ljnzgDw6wwEhV/lVg4/hTefWB97ikobEDsVUQ8qljBOTz8UjprABXZXgqs1PJopqRxTTQWxwnxKTA==",
+  "dgSpecHash": "tZ3K3kE78vkJ5X4zGWNvBTsgbzoC6iKa1UQ+QFUuHXyfB6qR1Nb30cbSlzkoLQDzqUPRc2emJzcGi+1gS1hHEw==",
   "success": true,
-  "projectFilePath": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador.CLI/Compilador.CLI.csproj",
-  "expectedPackageFiles": [
-    "/home/shinobu/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.11/microsoft.aspnetcore.app.ref.6.0.11.nupkg.sha512",
-    "/home/shinobu/.nuget/packages/microsoft.netcore.app.host.linux-x64/6.0.11/microsoft.netcore.app.host.linux-x64.6.0.11.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\shinobu\\Documents\\FURB\\Compiladores\\Compilador\\Compilador.CLI\\Compilador.CLI.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

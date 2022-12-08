@@ -1,0 +1,7 @@
+fun main {
+	var valor: float;
+	do
+		readln (valor);
+	while (valor < .5) end;
+	print ("valor maior ou igual a 0.5");
+}

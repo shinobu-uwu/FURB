@@ -4,21 +4,20 @@ namespace Compilador;
 
 public class Lexico
 {
-    private int Position;
-    public string Input { get; set; }
-
-    public Lexico(string texto)
-    {
-        Input = texto;
-        Position = 0;
-    }
+    public int Position { get; set; }
+    public string Input { get; private set; }
 
     public Lexico()
     {
-        Position = 0;
+        Input = "";
     }
 
-    public Token? NextToken()
+    public Lexico(string input)
+    {
+        Input = input;
+    }
+
+    public Token NextToken()
     {
         if (!HasInput())
             return null;
@@ -28,8 +27,8 @@ public class Lexico
         var state = 0;
         var lastState = 0;
         var endState = -1;
-        var end = -1;
 
+        var end = -1;
         while (HasInput())
         {
             lastState = state;
@@ -38,7 +37,9 @@ public class Lexico
             if (state < 0)
                 break;
 
-            if (TokenForState(state) < 0) continue;
+            if (TokenForState(state) < 0)
+                continue;
+            
             endState = state;
             end = Position;
         }
@@ -56,7 +57,7 @@ public class Lexico
         {
             var lexeme = Input.Substring(start, end - start);
             token = LookupToken(token, lexeme);
-            return new Token((Classe) token, lexeme, start);
+            return new Token((Classe)token, lexeme, start);
         }
     }
 
@@ -73,7 +74,7 @@ public class Lexico
                 return ScannerConstants.ScannerTable[half][1];
             else if (ScannerConstants.ScannerTable[half][0] < c)
                 start = half + 1;
-            else //(SCANNER_TABLE[half][0] > c)
+            else //(ScannerConstants.ScannerTable[half][0] > c)
                 end = half - 1;
         }
 

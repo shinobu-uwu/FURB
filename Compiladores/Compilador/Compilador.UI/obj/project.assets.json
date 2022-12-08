@@ -27,32 +27,34 @@
     ]
   },
   "packageFolders": {
-    "/home/shinobu/.nuget/packages/": {}
+    "C:\\Users\\shinobu\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador.UI/Compilador.UI.csproj",
+      "projectUniqueName": "C:\\Users\\shinobu\\Documents\\FURB\\Compiladores\\Compilador\\Compilador.UI\\Compilador.UI.csproj",
       "projectName": "Compilador.UI",
-      "projectPath": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador.UI/Compilador.UI.csproj",
-      "packagesPath": "/home/shinobu/.nuget/packages/",
-      "outputPath": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador.UI/obj/",
+      "projectPath": "C:\\Users\\shinobu\\Documents\\FURB\\Compiladores\\Compilador\\Compilador.UI\\Compilador.UI.csproj",
+      "packagesPath": "C:\\Users\\shinobu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\shinobu\\Documents\\FURB\\Compiladores\\Compilador\\Compilador.UI\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/shinobu/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\shinobu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0-windows"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "net6.0-windows7.0": {
           "targetAlias": "net6.0-windows",
           "projectReferences": {
-            "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador/Compilador.csproj": {
-              "projectPath": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador/Compilador.csproj"
+            "C:\\Users\\shinobu\\Documents\\FURB\\Compiladores\\Compilador\\Compilador\\Compilador.csproj": {
+              "projectPath": "C:\\Users\\shinobu\\Documents\\FURB\\Compiladores\\Compilador\\Compilador\\Compilador.csproj"
             }
           }
         }
@@ -77,22 +79,15 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[6.0.11, 6.0.11]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.linux-x64",
-            "version": "[6.0.11, 6.0.11]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
+          },
+          "Microsoft.WindowsDesktop.App.WindowsForms": {
+            "privateAssets": "none"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

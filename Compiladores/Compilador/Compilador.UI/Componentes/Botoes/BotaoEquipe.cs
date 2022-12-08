@@ -4,7 +4,7 @@ public sealed class BotaoEquipe : BotaoBarraFerramentas
 {
     public BotaoEquipe()
     {
-        Text = "Equipe";
+        Text = "Equipe [F1]";
         ToolTipText = "Equipe (F1)";
     }
 

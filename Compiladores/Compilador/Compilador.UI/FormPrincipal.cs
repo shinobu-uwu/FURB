@@ -10,7 +10,7 @@ public sealed class FormPrincipal : Form
     private static FormPrincipal? _instancia;
 
     public readonly BarraFerramentas BarraFerramentas = new();
-    public readonly TextoEditor TextoEditor = new();
+    public readonly EditorTexto EditorTexto = new();
     public readonly BarraStatus BarraStatus = new();
     public readonly AreaMensagens AreaMensagens = new();
     public readonly NumberedBorder NumberedBorder = new();
@@ -31,7 +31,7 @@ public sealed class FormPrincipal : Form
         Size = new Size(LarguraJanela, AlturaJanela);
         KeyPreview = true;
         Controls.Add(BarraFerramentas);
-        Controls.Add(TextoEditor);
+        Controls.Add(EditorTexto);
         Controls.Add(BarraStatus);
         Controls.Add(AreaMensagens);
     }
@@ -74,7 +74,7 @@ public sealed class FormPrincipal : Form
         {
             this.Invalidate();
             base.WndProc(ref m);
-            NumberedBorder.PaintBorder(TextoEditor, CreateGraphics(), TextoEditor.Height);
+            NumberedBorder.PaintBorder(EditorTexto, CreateGraphics(), EditorTexto.Height);
         }
         else
         {

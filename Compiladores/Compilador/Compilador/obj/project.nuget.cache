@@ -1,10 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "s987m7Xq5B+oc0/G1sje7DMeW6h++DrKMwOCiw9ragbIQzeHkx6vxjLG6Dzq/QSpofUDgSOn8ydm9luH/PskGw==",
+  "dgSpecHash": "5sq4xSRIF2objSHo7fXQvjRsekbuXV5MmPyEO1a37B++Az4efXr194dhsz/NWTAMAWbg4XSeWust7iuiySOkwA==",
   "success": true,
-  "projectFilePath": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador/Compilador.csproj",
-  "expectedPackageFiles": [
-    "/home/shinobu/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.11/microsoft.aspnetcore.app.ref.6.0.11.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\shinobu\\Documents\\FURB\\Compiladores\\Compilador\\Compilador\\Compilador.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

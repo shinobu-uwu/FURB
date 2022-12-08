@@ -1,6 +1,6 @@
 namespace Compilador.UI.Componentes;
 
-public sealed class TextoEditor : RichTextBox
+public sealed class EditorTexto : RichTextBox
 {
     public int AlturaLinha
     {
@@ -11,7 +11,7 @@ public sealed class TextoEditor : RichTextBox
         }
     }
 
-    public TextoEditor()
+    public EditorTexto()
     {
         Size = new Size(850, 400);
         Anchor = AnchorStyles.Left | AnchorStyles.Right | AnchorStyles.Top | AnchorStyles.Bottom;

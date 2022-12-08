@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "AP1IfPSCLcyToNQfQAv1PzDn90uUm+Hc5BdUXOMHHntQF2xJdVgyLesOJDPWcLqmWKbdDeHdl/XIW7vH6MqJpA==",
+  "dgSpecHash": "BhH/1+uFeQT31VlfS1BnoS9cSK9ZE1DNMqomaumYmBWZcFnsOObnpRuoqL3Cqib3rZ1FsN9Bln6ni+nFwHhdvA==",
   "success": true,
-  "projectFilePath": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador.UI/Compilador.UI.csproj",
-  "expectedPackageFiles": [
-    "/home/shinobu/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.11/microsoft.aspnetcore.app.ref.6.0.11.nupkg.sha512",
-    "/home/shinobu/.nuget/packages/microsoft.netcore.app.host.linux-x64/6.0.11/microsoft.netcore.app.host.linux-x64.6.0.11.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\shinobu\\Documents\\FURB\\Compiladores\\Compilador\\Compilador.UI\\Compilador.UI.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }

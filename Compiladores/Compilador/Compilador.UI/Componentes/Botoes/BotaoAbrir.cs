@@ -4,7 +4,7 @@ public sealed class BotaoAbrir : BotaoBarraFerramentas
 {
     public BotaoAbrir()
     {
-        Text = "Abrir";
+        Text = "Abrir [ctrl-o]";
         ToolTipText = "Abrir arquivo (ctrl + o)";
     }
 
@@ -16,8 +16,8 @@ public sealed class BotaoAbrir : BotaoBarraFerramentas
         if (dialog.ShowDialog() == DialogResult.OK)
         {
             var form = FormPrincipal.GetInstancia();
-            form.BarraStatus.Text = dialog.FileName;
-            form.TextoEditor.Text = File.ReadAllText(dialog.FileName);
+            form.EditorTexto.Text = File.ReadAllText(dialog.FileName);
+            form.AreaMensagens.Clear();
             form.BarraStatus.Text = dialog.FileName;
             form.CaminhoArquivoAberto = dialog.FileName;
         }

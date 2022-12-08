@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup />
+  <ItemGroup>
+    <Compile Update="Componentes\AreaMensagens.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Componentes\BarraFerramentas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Componentes\BarraStatus.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Componentes\Botoes\BotaoAbrir.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Componentes\Botoes\BotaoBarraFerramentas.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Componentes\Botoes\BotaoColar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Componentes\Botoes\BotaoCompilar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Componentes\Botoes\BotaoCopiar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Componentes\Botoes\BotaoEquipe.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Componentes\Botoes\BotaoNovo.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Componentes\Botoes\BotaoRecortar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Componentes\Botoes\BotaoSalvar.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Componentes\EditorTexto.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="Componentes\TextoEditor.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Update="FormPrincipal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+  </ItemGroup>
+</Project>

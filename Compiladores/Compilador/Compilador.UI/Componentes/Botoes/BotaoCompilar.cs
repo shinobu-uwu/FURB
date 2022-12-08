@@ -1,12 +1,10 @@
-using Compilador.Utils;
-
 namespace Compilador.UI.Componentes.Botoes;
 
 public sealed class BotaoCompilar : BotaoBarraFerramentas
 {
     public BotaoCompilar()
     {
-        Text = "Compilar";
+        Text = "Compilar [F7]";
         ToolTipText = "Compilar arquivo (F7)";
     }
 
@@ -18,26 +16,30 @@ public sealed class BotaoCompilar : BotaoBarraFerramentas
         var compilador = new Compilador();
 
         // Se o arquivo não estiver salvo mandamos o usuário salvar
-        if (form.CaminhoArquivoAberto is null)
+        var arquivoEntrada = form.CaminhoArquivoAberto;
+        
+        if (arquivoEntrada is null)
         {
             form.BarraFerramentas.BotaoSalvar.PerformClick();
         }
 
         try
         {
-            compilador.Input = File.ReadAllText(form.CaminhoArquivoAberto);
-            compilador.Compilar();
+            compilador.Input = File.ReadAllText(arquivoEntrada);
+            var programa = compilador.Compilar();
+            var arquivoSaida = arquivoEntrada.Replace(".txt", ".il");
+            File.WriteAllText(arquivoSaida, programa);
             form.AreaMensagens.EscreverMensagem("Programa compilado com sucesso");
         }
         catch (LexicalException exception)
         {
-            var substring = form.TextoEditor.Text.Substring(0, exception.Position);
+            var substring = form.EditorTexto.Text.Substring(0, exception.Position);
             var linha = substring.Count(c => c == '\n') + 1;
-            form.AreaMensagens.EscreverMensagem($"Erro na linha {linha}: {exception.Message}");
+            form.AreaMensagens.EscreverMensagem($"Erro na linha {linha} - {exception.Message}");
         }
         catch (SyntaticException exception)
         {
-            var substring = form.TextoEditor.Text.Substring(0, exception.Position);
+            var substring = form.EditorTexto.Text.Substring(0, exception.Position);
             var linha = substring.Count(c => c == '\n') + 1;
             var lexema = compilador.CurrentToken?.Lexeme;
 
@@ -45,9 +47,18 @@ public sealed class BotaoCompilar : BotaoBarraFerramentas
             {
                 lexema = "EOF";
             }
-            
+
             form.AreaMensagens.EscreverMensagem(
-                $"Erro na linha {linha}: encontrado {lexema} {exception.Message}"
+                $"Erro na linha {linha} - encontrado {lexema} {exception.Message}"
+            );
+        }
+        catch (SemanticException exception)
+        {
+            var substring = form.EditorTexto.Text.Substring(0, exception.Position);
+            var linha = substring.Count(c => c == '\n') + 1;
+
+            form.AreaMensagens.EscreverMensagem(
+                $"Erro na linha {linha} - {exception.Message}"
             );
         }
         catch (ArgumentNullException) // Ignoramos se o usuário clicar cancelar no dialog de salvar

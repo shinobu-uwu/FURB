@@ -8,24 +8,26 @@
     "net6.0": []
   },
   "packageFolders": {
-    "/home/shinobu/.nuget/packages/": {}
+    "C:\\Users\\shinobu\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador/Compilador.csproj",
+      "projectUniqueName": "C:\\Users\\shinobu\\Documents\\FURB\\Compiladores\\Compilador\\Compilador\\Compilador.csproj",
       "projectName": "Compilador",
-      "projectPath": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador/Compilador.csproj",
-      "packagesPath": "/home/shinobu/.nuget/packages/",
-      "outputPath": "/home/shinobu/Projects/FURB/Compiladores/Compilador/Compilador/obj/",
+      "projectPath": "C:\\Users\\shinobu\\Documents\\FURB\\Compiladores\\Compilador\\Compilador\\Compilador.csproj",
+      "packagesPath": "C:\\Users\\shinobu\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\shinobu\\Documents\\FURB\\Compiladores\\Compilador\\Compilador\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/shinobu/.nuget/NuGet/NuGet.Config"
+        "C:\\Users\\shinobu\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
       ],
       "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -54,18 +56,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[6.0.11, 6.0.11]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/7.0.100/RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }

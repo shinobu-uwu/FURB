@@ -13,17 +13,17 @@ public class Sintatico
 
     private static bool IsTerminal(Classe x)
     {
-        return (int)x < ParserConstants.FIRST_NON_TERMINAL;
+        return (int)x < ParserConstants.FirstNonTerminal;
     }
 
     private static bool IsNonTerminal(Classe x)
     {
-        return (int)x >= ParserConstants.FIRST_NON_TERMINAL && (int)x < ParserConstants.FIRST_SEMANTIC_ACTION;
+        return (int)x >= ParserConstants.FirstNonTerminal && (int)x < ParserConstants.FirstSemanticAction;
     }
 
     private static bool IsSemanticAction(int x)
     {
-        return x >= ParserConstants.FIRST_SEMANTIC_ACTION;
+        return x >= ParserConstants.FirstSemanticAction;
     }
 
     private bool Step()
@@ -59,7 +59,7 @@ public class Sintatico
                 return false;
             }
 
-            throw new SyntaticException(ParserConstants.PARSER_ERROR[(int)x], CurrentToken.Position);
+            throw new SyntaticException(ParserConstants.ParserError[(int)x], CurrentToken.Position);
         }
             
         if (IsNonTerminal(x))
@@ -69,20 +69,20 @@ public class Sintatico
                 return false;
             }
 
-            throw new SyntaticException(ParserConstants.PARSER_ERROR[(int)x], CurrentToken.Position);
+            throw new SyntaticException(ParserConstants.ParserError[(int)x], CurrentToken.Position);
         }
 
-        _semanticAnalyser.ExecuteAction((int)x - ParserConstants.FIRST_SEMANTIC_ACTION, _previousToken);
+        _semanticAnalyser.ExecuteAction((int)x - ParserConstants.FirstSemanticAction, _previousToken);
         return false;
     }
 
     private bool PushProduction(int topStack, int tokenInput)
     {
-        var p = ParserConstants.PARSER_TABLE[topStack - ParserConstants.FIRST_NON_TERMINAL][tokenInput - 1];
+        var p = ParserConstants.ParserTable[topStack - ParserConstants.FirstNonTerminal][tokenInput - 1];
         
         if (p >= 0)
         {
-            var production = ParserConstants.PRODUCTIONS[p];
+            var production = ParserConstants.Productions[p];
             //empilha a produção em ordem reversa
             for (var i = production.Length - 1; i >= 0; i--)
             {
@@ -102,7 +102,7 @@ public class Sintatico
 
         _stack.Clear();
         _stack.Push((int)Classe.Dollar);
-        _stack.Push(ParserConstants.START_SYMBOL);
+        _stack.Push(ParserConstants.StartSymbol);
 
         CurrentToken = scanner.NextToken();
 

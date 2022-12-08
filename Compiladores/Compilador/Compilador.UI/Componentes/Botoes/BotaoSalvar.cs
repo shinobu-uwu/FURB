@@ -4,7 +4,7 @@ public sealed class BotaoSalvar : BotaoBarraFerramentas
 {
     public BotaoSalvar()
     {
-        Text = "Salvar";
+        Text = "Salvar [ctrl-s]";
         ToolTipText = "Salvar (ctrl + s)";
     }
 
@@ -25,7 +25,8 @@ public sealed class BotaoSalvar : BotaoBarraFerramentas
             form.BarraStatus.Text = dialog.FileName;
         }
 
-        File.WriteAllText(form.CaminhoArquivoAberto, form.TextoEditor.Text);
+        File.WriteAllText(form.CaminhoArquivoAberto, form.EditorTexto.Text);
+        form.AreaMensagens.Clear();
 
         base.OnClick(e);
     }
