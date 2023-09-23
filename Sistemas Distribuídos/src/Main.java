@@ -24,7 +24,7 @@ public class Main {
     private static void addProcesso() {
         try {
             while (true) {
-                Thread.sleep(3_000);
+                Thread.sleep(30_000);
                 processos.add(new Processo(id++));
                 System.out.println(processos);
 
@@ -41,7 +41,7 @@ public class Main {
     private static void removeCoordenador() {
         try {
             while (true) {
-                Thread.sleep(10_000);
+                Thread.sleep(100_000);
                 processos.remove(coordenador);
                 coordenador = null;
                 System.out.println(processos);
@@ -60,7 +60,7 @@ public class Main {
         try {
             Random random = new Random();
             while (true) {
-                Thread.sleep(8_000);
+                Thread.sleep(80_000);
                 int n = random.nextInt(processos.size());
                 Processo processo = processos.remove(n);
 
@@ -83,7 +83,7 @@ public class Main {
         try {
             Random random = new Random();
             while (true) {
-                Thread.sleep(2500);
+                Thread.sleep(25000);
 
                 if (temEleicao || coordenador != null || processos.isEmpty()) {
                     continue;
@@ -101,7 +101,7 @@ public class Main {
                 }
 
                 coordenador = novoCoordenador;
-                temEleicao = true;
+                temEleicao = false;
                 System.out.println(processos);
                 System.out.println("Novo lider: " + coordenador.id);
             }
