@@ -1,113 +1,33 @@
-import java.util.*;
+import java.rmi.RemoteException;
+import java.rmi.registry.LocateRegistry;
+import java.rmi.registry.Registry;
+import java.rmi.server.UnicastRemoteObject;
 
 public class Main {
-    private  static final List<Processo> processos = Collections.synchronizedList(new ArrayList<>());
-    private static Processo coordenador;
-    private static long id = 1;
-    private static boolean temEleicao = false;
-
     public static void main(String[] args) {
-        Thread t1 = new Thread(Main::addProcesso);
-        Thread t2 = new Thread(Main::removeCoordenador);
-        Thread t3 = new Thread(Main::inativaProcesso);
-        Thread t4 = new Thread(Main::fazEleicao);
-
-        Scanner scanner = new Scanner(System.in);
-        t1.start();
-        t2.start();
-        t3.start();
-        t4.start();
-
-        scanner.nextLine();
-    }
-
-    private static void addProcesso() {
         try {
-            while (true) {
-                Thread.sleep(30_000);
-                processos.add(new Processo(id++));
-                System.out.println(processos);
-
-                if (coordenador != null) {
-                    System.out.println("Lider: " + coordenador.id);
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Exception!!! " + e.getMessage());
-            e.printStackTrace();
+            CalculadoraServerInterface server = new CalculadoraServerInterfaceImpl();
+            Registry registry = LocateRegistry.getRegistry();
+            registry.rebind("CalculadoraServerInterfaceImpl", server);
+            System.out.println("Servidor Calculadora " + server +
+                    " registrado e pronto para aceitar solicitações.");
+        }
+        catch (Exception ex) {
+            System.out.println("Houve um erro: " + ex.getMessage());
         }
     }
+}
 
-    private static void removeCoordenador() {
-        try {
-            while (true) {
-                Thread.sleep(100_000);
-                processos.remove(coordenador);
-                coordenador = null;
-                System.out.println(processos);
+interface CalculadoraServerInterface  {
+    public int somar(int a, int b) throws RemoteException;
+}
 
-                if (coordenador != null) {
-                    System.out.println("Lider: " + coordenador.id);
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Exception!!! " + e.getMessage());
-            e.printStackTrace();
-        }
+class CalculadoraServerInterfaceImpl extends UnicastRemoteObject implements CalculadoraServerInterface {
+    public CalculadoraServerInterfaceImpl() throws RemoteException {
     }
 
-    private static void inativaProcesso() {
-        try {
-            Random random = new Random();
-            while (true) {
-                Thread.sleep(80_000);
-                int n = random.nextInt(processos.size());
-                Processo processo = processos.remove(n);
-
-                if (coordenador != null && processo.id == coordenador.id) {
-                    coordenador = null;
-                }
-
-                System.out.println(processos);
-                if (coordenador != null) {
-                    System.out.println("Lider: " + coordenador.id);
-                }
-            }
-        } catch (Exception e) {
-            System.out.println("Exception!!! " + e.getMessage());
-            e.printStackTrace();
-        }
-    }
-
-    private static void fazEleicao() {
-        try {
-            Random random = new Random();
-            while (true) {
-                Thread.sleep(25000);
-
-                if (temEleicao || coordenador != null || processos.isEmpty()) {
-                    continue;
-                }
-
-                temEleicao = true;
-                int n = random.nextInt(processos.size());
-                Processo requisitor = processos.get(n);
-                Processo novoCoordenador = requisitor;
-
-                for (Processo processo : processos) {
-                    if (processo.id > requisitor.id) {
-                        novoCoordenador = processo;
-                    }
-                }
-
-                coordenador = novoCoordenador;
-                temEleicao = false;
-                System.out.println(processos);
-                System.out.println("Novo lider: " + coordenador.id);
-            }
-        } catch (Exception e) {
-            System.out.println("Exception!!! " + e.getMessage());
-            e.printStackTrace();
-        }
+    public int somar(int a, int b) throws RemoteException {
+        System.out.println("A: " + a + ", B: " + b + ", A + B: " + a + b);
+        return a + b;
     }
 }
