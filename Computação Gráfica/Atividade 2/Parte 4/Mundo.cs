@@ -5,7 +5,7 @@
 // #define CG_DirectX // render DirectX.
 // #define CG_Privado // código do professor.
 
-using System;
+using System.Collections.Generic;
 using CG_Biblioteca;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Windowing.Common;
@@ -36,11 +36,17 @@ namespace gcgcg
         private Shader _shaderVermelha;
         private Shader _shaderVerde;
         private Shader _shaderAzul;
+        private Shader _shaderBranca;
+        private Shader _shaderCiano;
 
         private bool mouseMovtoPrimeiro = true;
         private Ponto4D mouseMovtoUltimo;
-        private PrimitiveType _primitivaAtual = PrimitiveType.Points;
-        private Retangulo _retangulo;
+        private Spline _spline;
+        private Ponto4D _pontoSelecionado;
+        private List<Ponto4D> _pontosControle;
+        private List<Ponto> _pontos = [];
+        private List<SegReta> _segRetas = [];
+        private Shader _shaderAmarela;
 
         public Mundo(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings)
             : base(gameWindowSettings, nativeWindowSettings)
@@ -49,7 +55,8 @@ namespace gcgcg
         }
 
         protected override void OnLoad()
-        { base.OnLoad();
+        {
+            base.OnLoad();
 
             GL.ClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 
@@ -66,15 +73,51 @@ namespace gcgcg
             _shaderVermelha = new Shader("Shaders/shader.vert", "Shaders/shaderVermelha.frag");
             _shaderVerde = new Shader("Shaders/shader.vert", "Shaders/shaderVerde.frag");
             _shaderAzul = new Shader("Shaders/shader.vert", "Shaders/shaderAzul.frag");
+            _shaderBranca = new Shader("Shaders/shader.vert", "Shaders/shaderBranca.frag");
+            _shaderAmarela = new Shader("Shaders/shader.vert", "Shaders/shaderAmarela.frag");
+            _shaderCiano = new Shader("Shaders/shader.vert", "Shaders/shaderCiano.frag");
 
             #endregion
 
-            _retangulo = new Retangulo(mundo, ref rotuloAtual, new Ponto4D(-0.5, -0.5), new Ponto4D(0.5, 0.5))
+            _pontosControle = new List<Ponto4D>()
             {
-                ShaderObjeto = _shaderAzul,
-                PrimitivaTipo = _primitivaAtual,
+                new(-0.5),
+                new(0, 0.5),
+                new(0.5),
             };
-            objetoSelecionado = _retangulo;
+            _pontoSelecionado = _pontosControle[0];
+
+            for (var i = 0; i < _pontosControle.Count; i++)
+            {
+                var ponto = _pontosControle[i];
+                var pontoSeguinte = _pontosControle[(i + 1) % _pontosControle.Count];
+
+                if (ponto == _pontoSelecionado)
+                {
+                    _pontos.Add(new Ponto(mundo, ref rotuloAtual, ponto)
+                    {
+                        ShaderObjeto = _shaderVermelha
+                    });
+                }
+                else
+                {
+                    _pontos.Add(new Ponto(mundo, ref rotuloAtual, ponto)
+                    {
+                        ShaderObjeto = _shaderCiano
+                    });
+                }
+
+                _segRetas.Add(new SegReta(mundo, ref rotuloAtual, ponto, pontoSeguinte)
+                {
+                    ShaderObjeto = _shaderCiano
+                });
+            }
+
+            _spline = new Spline(mundo, ref rotuloAtual, _pontosControle)
+            {
+                ShaderObjeto = _shaderAmarela,
+            };
+            objetoSelecionado = _spline;
         }
 
         protected override void OnRenderFrame(FrameEventArgs e)
@@ -97,28 +140,12 @@ namespace gcgcg
             #region Teclado
 
             var input = KeyboardState;
+
             if (input.IsKeyPressed(Keys.Escape))
             {
                 Close();
             }
 
-            if (input.IsKeyPressed(Keys.Space))
-            {
-                _primitivaAtual = _primitivaAtual switch
-                {
-                    PrimitiveType.Points => PrimitiveType.Lines,
-                    PrimitiveType.Lines => PrimitiveType.LineLoop,
-                    PrimitiveType.LineLoop => PrimitiveType.LineStrip,
-                    PrimitiveType.LineStrip => PrimitiveType.Triangles,
-                    PrimitiveType.Triangles => PrimitiveType.TriangleStrip,
-                    PrimitiveType.TriangleStrip => PrimitiveType.TriangleFan,
-                    PrimitiveType.TriangleFan => PrimitiveType.Points,
-                    _ => _primitivaAtual
-                };
-
-                _retangulo.PrimitivaTipo = _primitivaAtual;
-                _retangulo.ObjetoAtualizar();
-            }
             #endregion
 
             #region Mouse
@@ -143,8 +170,8 @@ namespace gcgcg
                     mouseMovtoUltimo = sruPonto;
 
                     objetoSelecionado.PontosAlterar(
-                        new Ponto4D(objetoSelecionado.PontosId(0).X + deltaX, objetoSelecionado.PontosId(0).Y + deltaY,
-                            0), 0);
+                        new Ponto4D(objetoSelecionado.PontosId(0).X + deltaX, objetoSelecionado.PontosId(0).Y + deltaY),
+                        0);
                     objetoSelecionado.ObjetoAtualizar();
                 }
             }
@@ -155,7 +182,98 @@ namespace gcgcg
                 objetoSelecionado.ObjetoAtualizar();
             }
 
+            if (input.IsKeyDown(Keys.Space))
+            {
+                var i = _pontosControle.IndexOf(_pontoSelecionado);
+                var novoI = (i + 1) % _pontosControle.Count;
+                _pontoSelecionado = _pontosControle[novoI];
+                _pontos[i].ShaderObjeto = _shaderCiano;
+                _pontos[novoI].ShaderObjeto = _shaderVermelha;
+            }
+
+            const float velocidade = 0.01f;
+
+            if (input.IsKeyDown(Keys.C))
+            {
+                _pontoSelecionado.Y += velocidade;
+                AtualizarPoliedro();
+                _spline.Atualizar();
+            }
+
+            if (input.IsKeyDown(Keys.B))
+            {
+                _pontoSelecionado.Y -= velocidade;
+                AtualizarPoliedro();
+                _spline.Atualizar();
+            }
+
+            if (input.IsKeyDown(Keys.E))
+            {
+                _pontoSelecionado.X -= velocidade;
+                AtualizarPoliedro();
+                _spline.Atualizar();
+            }
+
+            if (input.IsKeyDown(Keys.D))
+            {
+                _pontoSelecionado.X += velocidade;
+                AtualizarPoliedro();
+                _spline.Atualizar();
+            }
+
+            if (input.IsKeyDown(Keys.Equal))
+            {
+                AdicionarPonto();
+                AtualizarPoliedro();
+                _spline.Atualizar();
+            }
+
+            if (input.IsKeyDown(Keys.Comma))
+            {
+                RemoverPonto();
+                AtualizarPoliedro();
+                _spline.Atualizar();
+            }
+
             #endregion
+        }
+
+        protected void AdicionarPonto()
+        {
+            var novoPonto = new Ponto4D();
+            var ultimoPonto = _pontosControle[^1];
+            _pontosControle.Add(novoPonto);
+            _pontos.Add(new Ponto(mundo, ref rotuloAtual, novoPonto)
+            {
+                ShaderObjeto = _shaderCiano
+            });
+            _segRetas.RemoveAt(_segRetas.Count - 1);
+            _segRetas.Add(new SegReta(mundo, ref rotuloAtual, novoPonto, _pontosControle[0])
+            {
+                ShaderObjeto = _shaderCiano
+            });
+            _segRetas.Add(new SegReta(mundo, ref rotuloAtual, novoPonto, ultimoPonto)
+            {
+                ShaderObjeto = _shaderVermelha
+            });
+        }
+
+        protected void RemoverPonto()
+        {
+            var i = _pontosControle.IndexOf(_pontoSelecionado);
+            _pontosControle.RemoveAt(i);
+            _pontos.RemoveAt(i);
+            _pontoSelecionado = _pontosControle[(i - 1) % _pontosControle.Count];
+            _segRetas.RemoveAt(i);
+        }
+
+        protected void AtualizarPoliedro()
+        {
+            for (var i = 0; i < _pontos.Count; i++)
+            {
+                _pontos[i].Atualizar();
+                _segRetas[i].ObjetoAtualizar();
+            }
         }
 
         protected override void OnResize(ResizeEventArgs e)
