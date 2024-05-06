@@ -45,7 +45,7 @@ namespace gcgcg
         private Ponto4D _pontoSelecionado;
         private List<Ponto4D> _pontosControle;
         private List<Ponto> _pontos = [];
-        private List<SegReta> _segRetas = [];
+        private Dictionary<(Ponto4D, Ponto4D), SegReta> _segRetas = new();
         private Shader _shaderAmarela;
 
         public Mundo(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings)
@@ -107,7 +107,7 @@ namespace gcgcg
                     });
                 }
 
-                _segRetas.Add(new SegReta(mundo, ref rotuloAtual, ponto, pontoSeguinte)
+                _segRetas.Add((ponto, pontoSeguinte), new SegReta(mundo, ref rotuloAtual, ponto, pontoSeguinte)
                 {
                     ShaderObjeto = _shaderCiano
                 });
@@ -238,42 +238,83 @@ namespace gcgcg
             #endregion
         }
 
+        private void AtualizarPoliedro()
+        {
+            foreach (var ponto in _pontos)
+            {
+                ponto.Atualizar();
+            }
+
+            foreach (var segReta in _segRetas.Values)
+            {
+                segReta.ObjetoAtualizar();
+            }
+        }
+
         protected void AdicionarPonto()
         {
             var novoPonto = new Ponto4D();
             var ultimoPonto = _pontosControle[^1];
+            var primeiroPonto = _pontosControle[0];
             _pontosControle.Add(novoPonto);
             _pontos.Add(new Ponto(mundo, ref rotuloAtual, novoPonto)
             {
                 ShaderObjeto = _shaderCiano
             });
-            _segRetas.RemoveAt(_segRetas.Count - 1);
-            _segRetas.Add(new SegReta(mundo, ref rotuloAtual, novoPonto, _pontosControle[0])
+            _segRetas[(ultimoPonto, primeiroPonto)].PontosLimpar();
+            _segRetas.Remove((ultimoPonto, primeiroPonto));
+            _segRetas.Add((ultimoPonto, novoPonto), new SegReta(mundo, ref rotuloAtual, ultimoPonto, novoPonto)
             {
                 ShaderObjeto = _shaderCiano
             });
-            _segRetas.Add(new SegReta(mundo, ref rotuloAtual, novoPonto, ultimoPonto)
+            _segRetas.Add((novoPonto, primeiroPonto), new SegReta(mundo, ref rotuloAtual, novoPonto, primeiroPonto)
             {
-                ShaderObjeto = _shaderVermelha
+                ShaderObjeto = _shaderCiano
             });
         }
 
         protected void RemoverPonto()
         {
-            var i = _pontosControle.IndexOf(_pontoSelecionado);
-            _pontosControle.RemoveAt(i);
-            _pontos.RemoveAt(i);
-            _pontoSelecionado = _pontosControle[(i - 1) % _pontosControle.Count];
-            _segRetas.RemoveAt(i);
-        }
-
-        protected void AtualizarPoliedro()
-        {
-            for (var i = 0; i < _pontos.Count; i++)
+            // não é possível ter um polígono com 2 pontos
+            if (_pontosControle.Count <= 3)
             {
-                _pontos[i].Atualizar();
-                _segRetas[i].ObjetoAtualizar();
+                return;
             }
+
+            var indice = _pontosControle.IndexOf(_pontoSelecionado);
+            var proximoIndice = (indice + 1) % _pontosControle.Count;
+            var pontoSeguinte = _pontosControle[proximoIndice];
+            _segRetas[(_pontoSelecionado, pontoSeguinte)].PontosLimpar();
+            _pontos[indice].PontosLimpar();
+            _pontos.RemoveAt(indice);
+            _pontosControle.RemoveAt(indice);
+            _pontoSelecionado = pontoSeguinte;
+            _pontos[proximoIndice].ShaderObjeto = _shaderVermelha;
+
+            foreach (var segReta in _segRetas.Values)
+            {
+                segReta.PontosLimpar();
+            }
+
+            _segRetas.Clear();
+
+            for (var i = 0; i < _pontosControle.Count; i++)
+            {
+                pontoSeguinte = _pontosControle[(indice + 1) % _pontosControle.Count];
+                _segRetas.Add((_pontosControle[i], pontoSeguinte),
+                    new SegReta(mundo, ref rotuloAtual, _pontosControle[i], pontoSeguinte)
+                    {
+                        ShaderObjeto = _shaderCiano,
+                    });
+            }
+
+            _segRetas.Add((_pontosControle[0], _pontosControle[^1]),
+                new SegReta(mundo, ref rotuloAtual, _pontosControle[0], _pontosControle[^1])
+                {
+                    ShaderObjeto = _shaderCiano,
+                });
+
+            AtualizarPoliedro();
         }
 
         protected override void OnResize(ResizeEventArgs e)
