@@ -19,6 +19,8 @@ namespace gcgcg
     public class Mundo : GameWindow
     {
         private static Objeto mundo = null;
+        private const double RaioMenor = 0.25;
+        private const double RaioMaior = 0.5;
 
         private char rotuloAtual = '?';
         private Objeto objetoSelecionado = null;
@@ -39,6 +41,11 @@ namespace gcgcg
 
         private bool mouseMovtoPrimeiro = true;
         private Ponto4D mouseMovtoUltimo;
+
+        private Circulo _circuloMenor;
+        private Circulo _circuloMaior;
+        private Ponto4D _centroCirculoMenor;
+        private Retangulo _bbox;
 
         public Mundo(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings)
             : base(gameWindowSettings, nativeWindowSettings)
@@ -68,9 +75,20 @@ namespace gcgcg
 
             #endregion
 
-            objetoSelecionado = new Circulo(mundo, ref rotuloAtual, 0.5, new Ponto4D(0, 0))
+            _centroCirculoMenor = new Ponto4D();
+            _circuloMenor = new Circulo(mundo, ref rotuloAtual, RaioMenor, _centroCirculoMenor)
+            {
+                ShaderObjeto = _shaderAzul
+            };
+            _circuloMaior = new Circulo(mundo, ref rotuloAtual, RaioMaior, new Ponto4D())
             {
                 ShaderObjeto = _shaderVermelha
+            };
+            _bbox = new Retangulo(mundo, ref rotuloAtual, new Ponto4D(-RaioMaior, -RaioMaior),
+                new Ponto4D(RaioMaior, RaioMaior))
+            {
+                ShaderObjeto = _shaderVerde,
+                PrimitivaTipo = PrimitiveType.LineLoop
             };
         }
 
@@ -125,9 +143,42 @@ namespace gcgcg
                 objetoSelecionado = mundo.GrafocenaBuscaProximo(objetoSelecionado);
             }
 
+            const float Velocidade = 0.01f;
+
             if (input.IsKeyPressed(Keys.C))
             {
-                objetoSelecionado.ShaderObjeto = new Shader("Shaders/shader.vert", "Shaders/shaderCiano.frag");
+                if (_centroCirculoMenor.Y  <= RaioMaior && PodeMover())
+                {
+                    _centroCirculoMenor.Y += Velocidade;
+                    _circuloMenor.Atualizar();
+                }
+            }
+
+            if (input.IsKeyPressed(Keys.B))
+            {
+                if (_centroCirculoMenor.Y >= -RaioMaior && PodeMover())
+                {
+                    _centroCirculoMenor.Y -= Velocidade;
+                    _circuloMenor.Atualizar();
+                }
+            }
+
+            if (input.IsKeyPressed(Keys.E))
+            {
+                if (_centroCirculoMenor.X >= -RaioMaior && PodeMover())
+                {
+                    _centroCirculoMenor.X -= Velocidade;
+                    _circuloMenor.Atualizar();
+                }
+            }
+
+            if (input.IsKeyPressed(Keys.D))
+            {
+                if (_centroCirculoMenor.X <= RaioMaior && PodeMover())
+                {
+                    _centroCirculoMenor.X += Velocidade;
+                    _circuloMenor.Atualizar();
+                }
             }
 
             #endregion
@@ -167,6 +218,13 @@ namespace gcgcg
             }
 
             #endregion
+        }
+
+        bool PodeMover()
+        {
+            var distancia = Math.Pow(_centroCirculoMenor.X, 2) + Math.Pow(_centroCirculoMenor.Y, 2);
+
+            return !(distancia >= Math.Pow(RaioMaior, 2));
         }
 
         protected override void OnResize(ResizeEventArgs e)

@@ -7,12 +7,12 @@ namespace gcgcg;
 internal class Circulo : Objeto
 {
     public Circulo(Objeto paiRef, ref char rotulo) : base(paiRef, ref rotulo) {}
+    const int numSegmentos = 72;
 
     public Circulo(Objeto paiRef, ref char rotulo, double raio, Ponto4D centro) : base(paiRef, ref rotulo)
     {
         PrimitivaTipo = PrimitiveType.Points;
-        PrimitivaTamanho = 1;
-        var numSegmentos = 72;
+        PrimitivaTamanho = 5;
         
         for (var i = 0; i < numSegmentos; i++)
         {
