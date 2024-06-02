@@ -82,7 +82,9 @@ namespace gcgcg
             };
             _circuloMaior = new Circulo(mundo, ref rotuloAtual, RaioMaior, new Ponto4D())
             {
-                ShaderObjeto = _shaderVermelha
+                ShaderObjeto = _shaderVermelha,
+                PrimitivaTipo = PrimitiveType.Lines,
+                PrimitivaTamanho = 1000.0f
             };
             _bbox = new Retangulo(mundo, ref rotuloAtual, new Ponto4D(-RaioMaior, -RaioMaior),
                 new Ponto4D(RaioMaior, RaioMaior))
